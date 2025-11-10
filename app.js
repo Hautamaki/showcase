@@ -31,7 +31,7 @@ function listProjects(data, category) {
         // Find the original index for showArticle function
         const originalIndex = data.projektit.findIndex(p => p.id === project.id);
         
-        projektitData += `<a onclick="showArticle(${filteredIndex})" class="projekti-linkki fade-in-up" style="animation-delay: ${filteredIndex * 0.05}s">`;
+        projektitData += `<a tabindex="0" onclick="showArticle(${filteredIndex})" class="projekti-linkki fade-in-up" style="animation-delay: ${filteredIndex * 0.05}s">`;
         projektitData += `<div class="icon-and-link">`;
         projektitData += `<div class="ball ${project.iconcolor}"></div>`;
         projektitData += project.heading;
@@ -43,7 +43,9 @@ function listProjects(data, category) {
     
     // Show the first project in the filtered list
     if (filteredProjects.length > 0) {
-        // showArticle(0);
+      if(!isViewedOnMobile) {
+        showArticle(0);
+      }
     } else {
         // Clear article content if no projects
         document.getElementById("articleName").innerHTML = "";
@@ -80,6 +82,17 @@ function changeTheme() {
 // Call the function
 loadJSON();
 
+isMobileView();
+
+function isMobileView() {
+  if(window.innerWidth <= 768) {
+    isViewedOnMobile = true;
+  } else {
+    isViewedOnMobile = false;
+    showArticle(0);
+  }
+}
+
 function showArticle(filteredIndex) {
 
   // We need to make so that on mobile it does not automatically run this line
@@ -114,3 +127,5 @@ document.getElementById("articleHeading").addEventListener('animationend', () =>
   document.getElementById("articleHeading").classList.remove('slowshow');
   document.getElementById("articleContent").classList.remove('slowshow');
 });
+
+window.addEventListener('resize', isMobileView);

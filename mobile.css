@@ -12,13 +12,16 @@
     }
     article {
         width: 100%;
-        min-height: 100%;
+        height: 200%;
         margin: 0;
         padding: 15px;
         position: absolute;
         top: 0;
         left: 0;
         display: none;
+    }
+    #back-to-main-screen {
+        display: block;
     }
     button {
         margin-bottom: 8px;
