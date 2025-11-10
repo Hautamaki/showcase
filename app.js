@@ -100,6 +100,12 @@ function isMobileView() {
 function showArticle(filteredIndex) {
   scrollToTop();
 
+  if(isViewedOnMobile) {
+    document.getElementById("projektit").style.display = "none";
+  } else {
+    document.getElementById("projektit").style.display = "block";
+  }
+
   // We need to make so that on mobile it does not automatically run this line
   // 1. when loading the page and 2. when selecting a category.
   document.getElementById("article").style.display = "block";
