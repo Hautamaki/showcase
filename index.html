@@ -7,6 +7,7 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
     <nav>
@@ -14,7 +15,6 @@
             <div class="nav-top">
                 <div>
                     <h1>Projekteja listattuna</h1>
-                    <a href="apps/photo-editor/index.html">photo</a>
 
                 </div>
                 <div class="settings">
@@ -39,7 +39,8 @@
             <h2>Näytetään kaikki projektit</h2>
             <div id="projektit"></div> <!-- Tähän tulee projektit dynaamisesti -->
         </aside>
-        <article>
+        <article id="article">
+            <div id="back-to-main-screen" onclick="backFromArticle()">Takaisin</div>
             <p id="articleName" class="slowshow"></p>
             <h2 id="articleHeading" class="slowshow"></h2>
             <div id="articleContent" class="slowshow"></div>
@@ -49,4 +50,5 @@
 </body>
 <script src="app.js"></script>
 <script src="theme.js"></script>
+<script src="mobile.js"></script>
 </html>

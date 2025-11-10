@@ -1,0 +1,32 @@
+/* mobile */
+@media (max-width: 768px) {
+    :root {
+        --width: 90%;
+    }
+    nav {
+        height: auto;
+        margin-top: 20px;
+    }
+    aside {
+        width: 100%;
+    }
+    article {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    button {
+        margin-bottom: 8px;
+        margin-right: 5px;
+    }
+    
+    main {
+        display: block;
+    }
+}
+

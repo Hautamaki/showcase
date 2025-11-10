@@ -80,6 +80,12 @@ function changeTheme() {
 loadJSON();
 
 function showArticle(filteredIndex) {
+
+  // We need to make so that on mobile it does not automatically run this line
+  // 1. when loading the page and 2. when selecting a category.
+  document.getElementById("article").style.display = "block";
+
+
   document.getElementById("articleName").classList.add('slowshow');
   document.getElementById("articleHeading").classList.add('slowshow');
   document.getElementById("articleContent").classList.add('slowshow');
