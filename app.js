@@ -54,6 +54,10 @@ function listProjects(data, category) {
     }
 }
 
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
+
 function showcategory(selectedCategory) {
     const allCategories = document.querySelectorAll('[onclick*="showcategory"]');
     allCategories.forEach(el => {
@@ -94,6 +98,7 @@ function isMobileView() {
 }
 
 function showArticle(filteredIndex) {
+  scrollToTop();
 
   // We need to make so that on mobile it does not automatically run this line
   // 1. when loading the page and 2. when selecting a category.

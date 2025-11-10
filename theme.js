@@ -29,7 +29,7 @@ class ThemeManager {
         if (window.matchMedia) {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                 if (!this.getSavedTheme()) { // Only auto-switch if no manual preference
-                    this.setTheme(e.matches ? 'dark' : 'light');
+                    this.setTheme(e.matches ? 'dark-blue' : 'light');
                 }
             });
         }

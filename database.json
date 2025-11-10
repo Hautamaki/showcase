@@ -45,7 +45,7 @@
       },
       "article": {
         "heading": "Tarveasunnot kotisivujen uudistus",
-        "content": ""
+        "content": "<img src='images/tafi.png'>"
       }
     },
     {
@@ -61,7 +61,7 @@
       },
       "article": {
         "heading": "Renter kotisivujen suunnittelu ja reakentaminen",
-        "content": "Tässä artikkelissa käsittelen mobiilisovelluksen teknologian valintaa. Vertailimme React Nativea, Flutteria ja natiiveja ratkaisuja. Päätimme valita React Nativen yhden koodipohjan mahdollistamisen vuoksi."
+        "content": "<img src='images/renterr.png'>"
       }
     },
     {
@@ -77,7 +77,7 @@
       },
       "article": {
         "heading": "Optimointityön tulokset ja oppimiset",
-        "content": "Tietokannan optimointiprojekti on nyt valmis. Saavutimme 65% parannuksen hitaimmissa kyselyissä. Tärkeimmät toimenpiteet olivat uusien indeksien luominen ja kyselyiden optimointi. Opimme, että säännöllinen tarkkailu on tärkeää."
+        "content": "<img src='images/tafira.png'>"
       }
     },
     {
@@ -93,7 +93,7 @@
       },
       "article": {
         "heading": "Kotisivujen ylläpito",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "content": "<img src='images/saamen-kammi.png'>"
       }
     },
     {
@@ -125,7 +125,7 @@
       },
       "article": {
         "heading": "Uusien kotisivujen suunnittelu ja toteutus",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "content": "<img src='images/hbkh.png'>"
       }
     },
     {
@@ -141,7 +141,7 @@
       },
       "article": {
         "heading": "Hyvinvointialan yrityksen kotisivut",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "content": "<img src='images/skeula.png'>"
       }
     },
     {
@@ -317,7 +317,103 @@
       },
       "article": {
         "heading": "Työpöytäsivu",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "content": "<img src='images/tafira.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Spiella",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/spiella.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Ravintola Freja",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/freja.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Nokkalan Majakka",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/nokkalan-majakka.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Hotelli Levi Panorama",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/hotel-levi-panorama.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Ravintola Knitter",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/ravintola-knitter.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Hotelli Matts",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/hotel-matts.png'>"
       }
     }
   ]
