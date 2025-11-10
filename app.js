@@ -2,6 +2,7 @@ let jsonData;
 let data;
 let category = '';
 let filteredProjects = [];
+let isViewedOnMobile;
 
 async function loadJSON() {
     try {
@@ -42,7 +43,7 @@ function listProjects(data, category) {
     
     // Show the first project in the filtered list
     if (filteredProjects.length > 0) {
-        showArticle(0);
+        // showArticle(0);
     } else {
         // Clear article content if no projects
         document.getElementById("articleName").innerHTML = "";
