@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
+</head>
+<body>
+    <nav>
+        <div class="search">
+            <div class="nav-top">
+                <div>
+                    <h1>Projekteja listattuna</h1>
+                    <a href="apps/photo-editor/index.html">photo</a>
+
+                </div>
+                <div class="settings">
+                    <p onclick="changeTheme('dark-blue')"><img src="icons/contrast-svgrepo-com.svg" alt=""></p>
+                </div>
+            </div>
+            <p>Täältä pääset näkemään IT-töitäni sekä projekteja joissa olen ollut mukana että myös harrasteluita.</p>
+            <h2>Valitse projektit kategorian mukaan</h2>
+            <div class="search-options">
+                <button onclick="showcategory.call(this, '')" class="selected">Näytä kaikki</button>
+                <button onclick="showcategory.call(this, 'nettisivu')"><div class="ball blue-icon"></div>Nettisivu</button>
+                <button onclick="showcategory.call(this, 'iot')"><div class="ball pink-icon"></div>IOT-projekti</button>
+                <button onclick="showcategory.call(this, 'atk')"><div class="ball yellow-icon"></div>Aputyökalu</button>
+                <button onclick="showcategory.call(this, '')">Virtuaalimaailmat</button>
+                <button onclick="showcategory.call(this, 'peli')"><div class="ball red-icon"></div>Pelit</button>
+                <button onclick="showcategory.call(this, 'modi')"><div class="ball green-icon"></div>Modit</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <h2>Näytetään kaikki projektit</h2>
+            <div id="projektit"></div> <!-- Tähän tulee projektit dynaamisesti -->
+        </aside>
+        <article>
+            <p id="articleName" class="slowshow"></p>
+            <h2 id="articleHeading" class="slowshow"></h2>
+            <div id="articleContent" class="slowshow"></div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+<script src="app.js"></script>
+<script src="theme.js"></script>
+</html>

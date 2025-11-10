@@ -1,0 +1,324 @@
+{
+  "projektit": [
+    {
+      "id": 18,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "pink-icon",
+      "category": "iot",
+      "heading": "LED-baarikaappi",
+      "description": "",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Putkitelevision piirilevyn hyödyntäminen <br> LED-valojen ohjaukseen",
+        "content": "        <img src='images/piirilevy.jpg'>    <h3>        Mistä projekti sai alkunsa    </h3>    <p>        Ajatus lähti Pinterestistä kun näin kuvan baarikaapista tai baarihyllystä, joka oli tehty vanhan putkitelevision rungosta. Kiinnostuin heti ideasta rakentaa itselle myös oma versio.    </p>    <p>        Menin heti Toriin ja löysin Saloran putkitelevision, jota oli käytetty kirjahyllynä. Eli sieltä oli poistettu kaikki putkitelevision komponentit sisältä.    </p>    <p>        Huomasin kuitenkin että yksi piirilevy oli jätetty television runkoon kiinni - ja hyvästä syystä. Tämä piirilevy siis pitää kiinni etupaneelin napit ja ilman piirilevyä television rungossa olisi iso reikä.    </p>    <p>        Tämä sai minut ajattelemaan että olisiko mahdollista hyödyntää television nappeja vaihtamaan baarikaapin ledien värejä tai kuviota. Tämä oli kuin olikin mahdollista!    </p>    <div class='image-with-text'>        <div>            <p>Aikaisempi - todella, todella, todella vähäinen - kokemus piirilevyistä ja komponenteista ei oikein auttanut projektin haasteissa.</p>        </div>        <img src='images/valoja.jpg' alt=''>    </div>    <h3>        Projektin haasteet    </h3>    <p>Projekti oli mielekäs, mutta todella haastava. Minulla oli oikea ajatus jo heti projektin lähtöpisteestä, se miten johdot tulisi kolvata piirilevyyn.</p>    <p>Tarkistin piirilevyn nappien sijainnit ja mihin ne johtavat. Piirilevy käyttää tyypillistä 4x4 nappimatrixia, mikä antaa meille 16 nappia 8 johdolla. Leikkasin sopivan mittaiset johdot ja kolvasin ne piirilevyyn.</p>    <p>Tein kytkennät johdoille arduinoon ja oli aika testata. Ei toimi...</p>    <p>Pitkän selvittelyn jälkeen, lukuisien nappimatrix dokumenttien lukemisen ja johtojen järjestyksen vaihtelemisen jälkeen. Ei toimi vieläkään.</p>    <p>Kirjoitin nappeja ohjaavan koodinkin ylösalaisin ja ympäri vaikka kuinka monesti, mutta en saanut toivottua tulosta. Satunnaisesti jotkut napit saattoivat toimia, ja joskus sattui haamupainalluksia.</p>    <p>Ihmettelin mistä tämä voi johtua ja päädyin lopputulokseen että johtoni olivat liian pitkät ja kasassa toistensa kanssa aiheuttaisi haamupainalluksia sähkön pomppiessa johdosta toiseen.</p>    <p>Joten leikkasin johdot lyhyiksi ja kokeilin uudestaan. Ei vieläkään.</p>    <p>Annoin projektin hautua ja tullessa takaisin mietin voisiko piirilevyn alkuperäiset komponentit vaikuttaa nappien toimintaan. Otin siis kolvin käteen ja poistin komponentin jonka ajattelin eniten vaikuttavan nappimatrixiin. Ja kuinkas ollakkaan, homma alkoi pelittämään.</p>    <div class='image-with-text'>        <img src='images/pvb.jpg' alt=''>        <div>            <p>Aikaisempi - todella, todella, todella vähäinen - kokemus piirilevyistä ja komponenteista ei oikein auttanut projektin haasteissa.</p>        </div>    </div>"
+      }
+    },
+    {
+      "id": 16,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Kuvaeditori",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2024"
+      },
+      "article": {
+        "heading": "Valokuvien kevyt muokkaaminen",
+        "content": "<img src='images/img-editor.jpg'> Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 1,
+      "icon": "ghost-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "TA",
+      "description": "Modernin web-sovelluksen kehitys Reactilla ja Node.js:llä",
+      "metainfo": {
+        "keywords": ["react", "node.js", "javascript", "frontend", "backend"],
+        "date": "2022"
+      },
+      "article": {
+        "heading": "Tarveasunnot kotisivujen uudistus",
+        "content": " <iframe src='apps/photo-editor/index.html' title='W3Schools Free Online Web Tutorials'></iframe> "
+      }
+    },
+    {
+      "id": 2,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Renter",
+      "description": "Cross-platform mobiilisovellus React Native -teknologialla",
+      "metainfo": {
+        "keywords": ["react native", "mobiili", "ios", "android", "cross-platform"],
+        "date": "2022"
+      },
+      "article": {
+        "heading": "Renter kotisivujen suunnittelu ja reakentaminen",
+        "content": "Tässä artikkelissa käsittelen mobiilisovelluksen teknologian valintaa. Vertailimme React Nativea, Flutteria ja natiiveja ratkaisuja. Päätimme valita React Nativen yhden koodipohjan mahdollistamisen vuoksi."
+      }
+    },
+    {
+      "id": 3,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Seurasaaren kruunu",
+      "description": "Olemassa olevan tietokannan suorituskyvyn parantaminen",
+      "metainfo": {
+        "keywords": ["tietokanta", "optimointi", "sql", "suorituskyky", "indeksit"],
+        "date": "2022"
+      },
+      "article": {
+        "heading": "Optimointityön tulokset ja oppimiset",
+        "content": "Tietokannan optimointiprojekti on nyt valmis. Saavutimme 65% parannuksen hitaimmissa kyselyissä. Tärkeimmät toimenpiteet olivat uusien indeksien luominen ja kyselyiden optimointi. Opimme, että säännöllinen tarkkailu on tärkeää."
+      }
+    },
+    {
+      "id": 4,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Saamen kammi",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2022"
+      },
+      "article": {
+        "heading": "Kotisivujen ylläpito",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 5,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Virtuaalimaailmat",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": ""
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 6,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Haikonen Brothers",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2024"
+      },
+      "article": {
+        "heading": "Uusien kotisivujen suunnittelu ja toteutus",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 7,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Skeula",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2025"
+      },
+      "article": {
+        "heading": "Hyvinvointialan yrityksen kotisivut",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 8,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Salasana generaattori",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2020"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 9,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Väripaletti generaattori",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2025"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 10,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "red-icon",
+      "category": "peli",
+      "heading": "Sanahaku peli",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2024"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 11,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "red-icon",
+      "category": "peli",
+      "heading": "Karttapeli",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2022"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 12,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Uutiskirje rakentaja",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2025"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 13,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Flexbox",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2024"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 14,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Css liukuvärit",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 15,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "green-icon",
+      "category": "modi",
+      "heading": "GTA V poliisimodi",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Yksinkertaisen ja kevyen <br> poliisimodin luominen GTA 5 peliin",
+        "content": "    <img src='images/gta.jpg' alt=''>    <h3>Mistä projekti sai alkunsa</h3>    <p>        Ajatus lähti Pinterestistä kun näin kuvan baarikaapista tai baarihyllystä, joka oli tehty vanhan putkitelevision rungosta. Kiinnostuin heti ideasta rakentaa itselle myös oma versio.    </p>    <p>        Menin heti Toriin ja löysin Saloran putkitelevision, jota oli käytetty kirjahyllynä. Eli sieltä oli poistettu kaikki putkitelevision komponentit sisältä.    </p>    <p>        Huomasin kuitenkin että yksi piirilevy oli jätetty television runkoon kiinni - ja hyvästä syystä. Tämä piirilevy siis pitää kiinni etupaneelin napit ja ilman piirilevyä television rungossa olisi iso reikä.    </p>    <p>        Tämä sai minut ajattelemaan että olisiko mahdollista hyödyntää television nappeja vaihtamaan baarikaapin ledien värejä tai kuviota.    </p>     <div class='image-with-text'>        <div>            <p>Aikaisempi - todella, todella, todella vähäinen - kokemus piirilevyistä ja komponenteista ei oikein auttanut projektin haasteissa.</p>        </div>        <img src='images/valoja.jpg' alt=''>    </div>"
+      }
+    },
+    {
+      "id": 17,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Piirtotyökalu",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Design Systemin perustaminen",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 19,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Aloitus-sivu",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Kuvapankki",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Työpöytäsivu",
+        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+      }
+    }
+  ]
+}
