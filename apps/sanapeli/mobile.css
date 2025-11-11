@@ -1,0 +1,67 @@
+@media screen and (max-width: 800px) {
+    #next-to-eachother {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+    }
+    #word-list-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        color: #333;
+        margin-left: 0px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        width: 345px;
+        min-height: 484px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    #logo-container img {
+        max-width: 400px;
+    }
+
+    .season-level-button {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .season-level-name {
+        left: 0 !important;
+        right: 0 !important;
+        position: unset !important;
+    }
+    #nav-container {
+        max-width: 400px;
+    }
+
+    .level-select-container, #wrapper{
+        width: calc(95vw);
+    }
+    body {
+        height: 100%;
+        padding: 10px;
+    }
+
+    .level {
+        width: 390px;
+    }
+    .level-button {
+        width: 135px;
+    }
+    .level-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+    }
+  }

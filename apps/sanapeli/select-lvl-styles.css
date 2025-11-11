@@ -1,0 +1,227 @@
+/* Add this to your existing styles.css file */
+body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-text {
+    text-align: left;
+}
+
+.fa-solid {
+    color: #f2a426;
+}
+.fa-regular {
+    color: rgba(255, 255, 255, 0.59);
+}
+
+h1, h2 {
+    text-align: left;
+}
+
+#tammi, #helmi, #maalis, #huhti, #touko, #kesä, #heinä, #elo, #syys, #loka, #marras, #joulu {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+#nav-container {
+    width: 800px;
+
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+
+    margin-bottom: 10px;
+}
+#nav-container i {
+    color: rgba(255, 255, 255, 0.566);
+    transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+}
+#nav-container i:hover {
+    color: white;
+}
+
+#settings-container {
+    max-width: 800px;
+    text-align: center;
+    padding: 50px 0;
+}
+
+#nav-container a {
+    font-size: 20px;
+    }
+#nav-container a:hover ~ #nav-container i {
+    color: red !important;
+    }
+
+
+#logo-container img {
+    width: 800px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.level-buttons a {
+    color: #2575fc;
+    text-decoration: none;
+    font-size: 45px;
+    font-weight: bold;
+}
+a span {
+    color: #88b4ff;
+}
+
+.level-buttons {
+    max-width: 800px;
+}
+
+.level-select-container {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.level-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.level-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    margin: 5px;
+    /* padding: 20px 54px; */
+    width: 148px;
+    height: 122px;
+    /* padding: 20px 0; */
+    padding-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.level-button:hover, .season-level-button:hover {
+    transform: translateY(-5px);
+}
+
+.season-level-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    margin: 10px;
+    padding: 30px 10px;
+    cursor: pointer;
+    /* min-width: 400px; */
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    background-size: contain;
+    color: #33333300;
+}
+
+.season-level-name {
+    color: #f2a426;
+    text-shadow: 0 1px #333;
+    font-size: 30px;
+}
+
+/* SEASONAL LEVEL SELECT BACKGROUND IMAGES */
+#halloween {
+    background-image: url(img/halloween-bg-do-not-use.jpg);
+    background-size: cover;
+} #halloween .season-level-name {
+    color: rgb(94, 255, 0);
+    text-shadow: none;
+    text-shadow: 0 0 20px rgb(94, 255, 0);
+    position: relative;
+    left: -25%;
+}
+#kesa {
+    background-image: url(img/juhannus.png);
+    background-size: cover;
+    background-position: center;
+} #kesa .season-level-name {
+    color: #3fd2ff;
+    text-shadow: black 2px 3px 0, rgb(126, 236, 255) -2px -2px 0;
+}
+#joulumaa {
+    background-image: url(img/joulu.png);
+    background-size: cover;
+} #joulumaa .season-level-name {
+    color: rgb(255, 44, 44);
+}
+#paasiainen {
+    background-image: url(img/paasiainen.png);
+}
+
+/* SEASONAL LEVEL SELECT BACKGROUND IMAGES END */
+
+
+
+.level-name {
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.finished {
+    position: relative;
+    top: -103px;
+    right: -40px;
+}
+
+
+#other-games img {
+    max-width: 800px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.more-coming-soon {
+    background-color: #1046a5;
+    color: #87b3ff;
+    margin-top: 30px;
+    padding: 10px 0;
+    border-radius: 3px;
+}
+
+.fake-footer {
+    background-color: #0a3175;
+    padding: 50px 0;
+    margin-top: 150px;
+} .fake-footer p, .fake-footer a {
+    color: white !important;
+    font-size: 16px !important;
+}

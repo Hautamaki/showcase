@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Sanapeli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="mobile.css">
+
+    <script src="https://kit.fontawesome.com/29a9274685.js" crossorigin="anonymous"></script>
+    <script defer src="bg-for-seasonal-levels.js"></script>
+
+
+</head>
+<body id="bodyd">
+    <div id="wrapper">
+
+        <div id="nav-container">
+            <div><a href="index.html"><i class="fa-solid fa-arrow-left"></i></a></div>
+            <div></div>
+        </div>
+
+    <!-- <div id="logo-container">
+        <img src="img/sanahakuli.png" alt="Sanahakuli game logo image.">
+    </div> -->
+
+    <div class="level-wrapper">
+        <div class="level">
+            <h2>Taso <span id="lvl">1</span></h2>
+            <h3 id="vaikeusaste">Vaikeusaste <i class="fa-solid fa-star"></i></h3>
+        </div>
+    </div>
+    
+    <div id="next-to-eachother">
+    <div id="game-container">
+
+        <div class="hint-wrap">
+            <button id="hint-btn"><i class="fa-regular fa-circle-question"></i> Vihje</button>
+        </div>
+
+        <div id="current-word"></div>
+        <div></div>
+        <div id="word-grid"></div>
+        <button id="check-word-btn">Tarkista</button>
+        <div id="message"></div>
+    </div>
+    <div id="word-list-container">
+        <h2>Etsi sanat:</h2>
+        <div id="word-list"></div>
+    </div>
+</div>
+
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <img src="img/confetti.gif" alt="">
+            <img src="img/confetti.gif" alt="">
+            <h2>Hurraa!</h2>
+            <p>Taso läpäisty</p>
+            <button id="homepage-btn"><i class="fa-solid fa-house"></i><br>Valikko</button>
+            <button id="next-level-btn"><i class="fa-solid fa-caret-right"></i><br>Seuraava</button>
+        </div>
+    </div>
+    
+
+
+    <script src="script.js"></script>
+    <script src="level-setup.js"></script>
+</body>
+</html>

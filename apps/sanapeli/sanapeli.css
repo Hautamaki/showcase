@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Rocher';
+    src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+  }
+  
+ #logo-container {
+    background-color: white;
+    background-image: url(img/jr-korpa-stwHyPWNtbI-unsplash.jpg);
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    padding: 50px 0;
+
+    display: flex;
+    flex-direction: column;
+ } #logo-container p {
+    color: white;
+ }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  @font-palette-values --Grays {
+    font-family: Rocher;
+    base-palette: 9;
+  }
+  
+  @font-palette-values --Purples {
+    font-family: Rocher;
+    base-palette: 6;
+  }
+  
+  @font-palette-values --Mint {
+    font-family: Rocher;
+    base-palette: 7;
+  }
+  
+  .grays {
+    font-palette: --Grays;
+  }
+  
+  .purples {
+    font-palette: --Purples;
+  }
+  
+  .mint {
+  
+    font-palette: --Mint;
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 50px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+  }
