@@ -8,6 +8,9 @@
         --background-gray-dark: #cbcbcb;
         --text-color: rgb(77, 76, 76);
 
+        --a-color: rgb(66, 154, 255);
+        --a-hover: rgb(33, 128, 237);
+
         --link-color: rgba(0, 0, 0, 0.85);
         --link-background:rgb(245, 245, 245);
         --link-border: rgb(175, 175, 175);
@@ -37,6 +40,9 @@
         --background-gray: #2d3748;
         --background-gray-dark: #1a202c;
         --text-color: #96a0ac;
+
+        --a-color: rgb(220, 219, 219);
+        --a-hover: rgb(33, 128, 237);
     
         --link-color: rgba(255, 255, 255, 0.9);
         --link-background: #4a5568;
@@ -61,6 +67,9 @@
         --background-gray: #1e1e1e;
         --background-gray-dark: #121212;
         --text-color: #929292;
+
+        --a-color: rgb(66, 154, 255);
+        --a-hover: rgb(33, 128, 237);
     
         --link-color: rgba(255, 255, 255, 0.95);
         --link-background: #2d2d2d;
@@ -101,6 +110,12 @@
 
     h1, h2, h3 {
         color: var(--heading-color);
+    }
+
+    a {
+        color: var(--a-color);
+    }a:hover {
+        color: var(--a-hover);
     }
 
     nav {
@@ -299,6 +314,11 @@
         margin-bottom: 15px;
         font-size: 18px;
         color: var(--text-color);
+    }
+    article a {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 15px !important;
     }
 
     footer {

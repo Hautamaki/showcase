@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Location Guessing Game</title>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	<link rel="stylesheet" href="reset.css" />
+	<link rel="stylesheet" href="styles.css" />
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<!--
+<div class="heding center">
+    <div>
+        <p>Kartta</p>
+        <h1>Suomi helppo</h1>
+    </div>
+</div>
+-->
+
+<div id="map-wrapper">
+    <div id="points">
+        <p>Kierroksen pisteet: <span id="roundpoints">0</span> </p>
+        <p>Kierros: <span id="currentRound">1</span>/5</p>
+    </div>
+
+    <!-- <div id="map" style="width: 800px; height: 600px;"></div> -->
+    <div id="map" style="width: 100%; height: 600px;"></div> 
+    <div id="game">
+        <div>
+            <div id="city"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id="buttons">
+    <div>
+        <button id="readyButton" class="valmis-button" onclick="checkAnswer()">Valmis</button>
+        <button id="nextGameButton" class="valmis-button" onclick="nextRound()" disabled >Seuraava</button>
+    </div>
+</div>
+
+<!-- Teksit roundin lopputekstille, miten saa kartan päälle? -->
+<div class="center">
+<p class="text" id="round-end-text">
+    <span class="text__first">
+        <span class="text__word">sait <strong id="piste-round-end-teksti">0</strong> pistettä &</span>
+        <span class="whitefirst-bg"></span>
+        <span class="text__first-bg"></span>
+    </span><br />
+    <span class="text__second">
+        <span class="text__word">olit <strong id="metri-round-end-teksti">0</strong> metriä sijainnista</span>
+        <span class="whitesecond-bg"></span>
+        <span class="text__second-bg"></span>
+    </span>
+</p>
+</div>
+<!-- Teksit roundin lopputekstille, miten saa kartan päälle? END-->
+
+<!-- TEkstit pelin lopputeksteille. Pelin kokonais statsit yms -->
+<div class="center">
+    <div class="stats-screen" id="stats-screen">
+
+        <!-- IDEA for maybe adding a gif to the stats screen based on your points - happy gif if good points and so on.
+        <img src="https://media0.giphy.com/media/3o6wrebnKWmvx4ZBio/giphy.gif?cid=ecf05e47d8x05pby81uhrpyb4bqw64hj89veb1tf2s51wsd6&ep=v1_gifs_search&rid=giphy.gif&ct=g">
+        <img src="https://media0.giphy.com/media/wJOY1oGEFCUOGPPd15/giphy.gif?cid=ecf05e472biblu9szaewlnn1ld71grzbzvp4xzpyp1bj2ic7&ep=v1_gifs_search&rid=giphy.gif&ct=g">
+        -->
+
+        <div class="stats-screen-inner">
+            <h4>Kiitos pelaamisesta</h4>
+            <p>Paras kierros
+                </br><span id="best-round-points"></span>
+            </p>
+            <p>Pisteet yhteensä
+                </br><span id="points-total">0000</span>
+            </p>
+            <p>Ansaittu titteli
+                </br><span id="ansaittu-titteli"></span>
+            </p>
+            <div class="button-a-wrap">
+                <a href="index.html" class="valmis-button button-a">Kokeile toista peliä</a>
+                <a href="#" id="play-again-link" class="valmis-button button-a">Pelaa uudestaan</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- TEkstit pelin lopputeksteille. Pelin kokonais statsit yms END -->
+
+<script>
+//url parametrin mukaan mikä peli on kyseessä eli mihin tietokantaan otetaan yhteys
+const sivunUrl = new URL(window.location.toLocaleString()).searchParams;
+const sivunPuhdasUrl = new URL(window.location.toLocaleString());
+console.log(sivunUrl.getAll('game'));
+
+var path = sivunUrl.getAll('game')[0] + "/get.php"; //path for database php file
+console.log(path);
+
+
+
+var numbers = []; // new empty array for the randomised rounds
+var min, max, r, n, p; // variables for the randomisasion
+
+var arvottu = false;
+
+r = 5; // AMOUNT OF ROUDNS PER GAME
+
+var karttaLat;
+var karttaLon;
+
+var roundZoom;
+
+var layerGroup = L.layerGroup();
+
+//var tiles;
+
+var map = L.map('map');
+var marker = L.marker([51.49, -0.09]).addTo(map)
+		.bindPopup('Vastauksesi.');
+var correctMarkerLocation;
+
+var currentRound = 1;
+
+var bestRound = 0;
+var pointsTotal = 0;
+
+document.getElementById("readyButton").disabled = true;
+
+document.getElementById("play-again-link").href = sivunPuhdasUrl;
+
+
+init();
+
+function init() {
+  getContacts();
+}
+
+function getContacts() { // Hakee tiedot tietokannasta
+  //let path = 'http://localhost/location-guessing-game-backup/php/get.php';
+  $.ajax({
+    type: 'GET',
+    url: path,
+    success : function(data, status) {
+      data = JSON.parse(data);
+      //console.log(data);
+      createHtmlForContacts(data);
+    }
+  });
+}
+
+
+
+function createHtmlForContacts(data) { //Tulostaa taulun johon tiedot tietokannasta
+  let html = '';
+  
+min = 0;
+max = data.length - 1;
+
+if(!arvottu) {
+    for (let i = 0; i < r; i++) {
+  do {
+    n = Math.floor(Math.random() * (max - min + 1)) + min;
+    p = numbers.includes(n);
+    if(!p){
+      numbers.push(n);
+    }
+  }
+  while(p);
+}
+
+console.log(numbers.join(", "));
+
+arvottu = true; // SO it doesn't run this every round
+}
+const satunnainenCurrent = numbers[currentRound - 1];
+console.log(satunnainenCurrent);
+
+  satunnainen = Math.floor(Math.random() * data.length);
+
+html += '<h4>' + data[satunnainenCurrent]['city'] + '</h4>';
+html += '<h3>Etsi kartalta <span class="nahtavyys-teksti">' + data[satunnainenCurrent]['description'] + '</span></h3>';
+
+
+
+    karttaLat = data[satunnainenCurrent]['maploclat'];
+    karttaLon = data[satunnainenCurrent]['maploclon'];
+
+    correctLat = data[satunnainenCurrent]['correctloclat'];
+    correctLon = data[satunnainenCurrent]['correctloclon'];
+
+    roundZoom = data[satunnainenCurrent]['zoom'];
+
+//correctMarkerLocation = data[satunnainen][correctlocation];
+
+//console.log(data[satunnainen]['city']);
+  
+  for (let i=0; i<data.length; i++) {
+    j = i+1;
+  }
+
+  //City 
+  $('#city').empty();
+  $('#city').append(html);
+      //Mikä alue
+	//const map = L.map('map').setView([62.909433, 27.655297], 14);
+
+    drawMap(karttaLat, karttaLon, correctLat, correctLon, roundZoom); 
+
+}
+
+    //jottei pelaaja voi vaihtaa pistettä tarkistaessaan tulosta
+    answerCheckMode = false;
+    document.getElementById("nextGameButton").disabled = true;
+
+    //Roundin lopputeksti
+    var tl = new TimelineLite({delay: 1}),
+    firstBg = document.querySelectorAll('.text__first-bg'),
+    secBg = document.querySelectorAll('.text__second-bg'),
+    whitefirstBg = document.querySelectorAll('.whitefirst-bg');
+    whitesecBg = document.querySelectorAll('.whitesecond-bg');
+    word  = document.querySelectorAll('.text__word');
+  
+  tl
+    .to(firstBg, 0.2, {scaleX:1})
+    //.to(whitefirstBg, 0.2, {scaleX:1})
+    .to(secBg, 0.2, {scaleX:1})
+    //.to(whitesecsBg, 0.2, {scaleX:1})
+    .to(word, 0.1, {opacity:1}, "-=0.1")  
+    .to(firstBg, 0.2, {scaleX:0})
+    .to(secBg, 0.2, {scaleX:0});
+    //ROUNDIN LOPPUTEKSTI END
+
+
+function drawMap(karttaLat, karttaLon, correctLat, correctLon, roundZoom){ 
+
+
+//console.log("hmm tuleeko data?: " + karttaLat);
+
+    //oikea vastaus
+    //correctMarkerLocation = [62.909433, 27.655297];
+    //pelaajan markkeri tallentuu
+    var playerAnswerLocation = [null, null];
+
+
+
+
+    //tähän alle const map ja const correctmarkerlocation niin taas toimii
+
+    //map = L.map('map').setView([karttaLat, karttaLon], 14);
+    
+    //map = L.map('map').setView([karttaLat, karttaLon], 14);
+
+    //function setupmap(){
+        //map = L.map('map').setView([karttaLat, karttaLon], 14);
+        map.setView([karttaLat, karttaLon], roundZoom);
+        //map.setLatLng([karttaLat, karttaLon]);
+
+ 
+    
+    correctMarkerLocation = [correctLat, correctLon];
+
+    //kartan konfigurointi ZOOMAUKSEN VAPAUTUMISELLE, jotta pelaaja voi tarkastella vaustausta
+	const tiles = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        zoomControl: false,
+		maxZoom: roundZoom,
+        minZoom: roundZoom,
+        subdomains:['mt0','mt1','mt2','mt3'],
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+    map.setZoom(roundZoom);
+
+	//const marker = L.marker([51.49, -0.09]).addTo(map)
+		//.bindPopup('Vastauksesi.');
+    //}
+ 
+
+
+} //drawmap func end 12
+
+
+// jQuery methods go here...
+map.on('click', onMapClick);
+
+	function onMapClick(e) {
+        //paljastaa "valmis" napin
+        if(answerCheckMode) {
+            document.getElementById("readyButton").disabled = true;
+        } else {
+            document.getElementById("readyButton").disabled = false;
+        }
+
+        //pelaajan merkki
+        if(!answerCheckMode) {
+            marker
+                .setLatLng(e.latlng)
+            playerAnswerLocation = e.latlng;
+            console.log("Pelaajan lokaatio: " + playerAnswerLocation);
+        }
+	}
+
+
+
+    function checkAnswer() {
+    //tarkistus mode päälle
+    answerCheckMode = true;
+
+    //kartan konfigurointi ZOOMAUKSEN VAPAUTUMISELLE, jotta pelaaja voi tarkastella vaustausta
+	const tiles = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        zoomControl: false,
+		maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3'],
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+    console.log("zoom: " + roundZoom);
+    //console.log(parseInt(roundZoom));
+    kok = parseInt(roundZoom);
+    koki = kok + 1;
+    console.log("+1 zoom: " + koki);
+
+    map.panTo(new L.LatLng(correctLat, correctLon));
+    //map.setZoom(koki);
+
+
+
+        //paljastaa oikean vastauksen
+        //const correctMarker = L.marker(correctMarkerLocation).addTo(map)
+        const correctMarker = L.marker(correctMarkerLocation)
+		    .bindPopup('Oikea vastaus.');
+
+        //console.log(playerAnswerLocation);
+        //console.log("Oikea lokaation: " + correctMarkerLocation);
+
+        //purkaa pelaajan lokaation
+        playerAnswerLocationFormatted = Object.values(playerAnswerLocation);
+
+        //viiva oikean ja pelaajan vastauksen välillä
+        const polyline = L.polyline([playerAnswerLocation, correctMarkerLocation], {color: 'white'});
+
+
+        //laitetaan markeri ja viiva mielummin layeriin jotta voidaan poistaa myöhemmin helposti
+        //TÄHÄN
+        layerGroup.addLayer(correctMarker);
+        layerGroup.addLayer(polyline);
+        //lisätään layeri kartalle
+        map.addLayer(layerGroup);
+        correctMarker._icon.style.filter = "hue-rotate(275deg)";
+
+
+        //pisteiden laskemiseen, lokaatioiden etäisyys
+        distanceCalc = playerAnswerLocation.distanceTo(correctMarkerLocation) / 4;
+        points = 1000 - distanceCalc;
+
+        //pisteiden määrittelyä matkan pituuden perusteella
+        if(distanceCalc * 4 < 101) {
+            points = 1000;
+        }
+        else if(distanceCalc * 4 < 999){
+            points = 700 - distanceCalc;
+        }
+        else if(distanceCalc * 4 > 999 && distanceCalc * 4 < 1999){
+            points = 500 - distanceCalc;
+        }
+        else if(distanceCalc * 4 > 2000){
+            points = 0;
+        }
+        else {
+            points = 0;
+        }
+
+        var roundPoints = Math.ceil(points);
+
+        document.getElementById("roundpoints").innerHTML = roundPoints;
+
+        if (roundPoints > bestRound){
+            bestRound = roundPoints;
+        }
+
+        pointsTotal = pointsTotal + roundPoints;
+
+        document.getElementById("best-round-points").innerHTML = bestRound;
+        document.getElementById("points-total").innerHTML = pointsTotal;
+
+
+        document.getElementById("piste-round-end-teksti").innerHTML = Math.ceil(points);
+        document.getElementById("metri-round-end-teksti").innerHTML = Math.ceil(distanceCalc * 4);
+
+        document.getElementById("round-end-text").style.display = "block";
+        tl.restart()
+
+
+        //valmistautuu seuraavaan peliin
+        document.getElementById("nextGameButton").disabled = false;
+        document.getElementById("readyButton").disabled = true;
+    }
+
+
+    function nextRound() {
+        currentRound = currentRound + 1;
+
+        if(currentRound < 6) {
+        document.getElementById("currentRound").innerHTML = currentRound;
+        //clear previous markers from the map
+        layerGroup.clearLayers(); // tarttetaanko itseasiassa ehkä kaks layeria, toinen pelaajan merkille ja toinen oikealle vastaukselle
+        //resettaa roundipisteet
+        document.getElementById("roundpoints").innerHTML = "0";
+        //jottei pelaaja voi vaihtaa pistettä tarkistaessaan tulosta
+        answerCheckMode = false;
+        //piilottaa roundin lopputekstin
+        document.getElementById("round-end-text").style.display = "none";
+        //TÄHÄN SEURAAVAN ROUNDIN MAPPI? MITEN?
+        getContacts();
+        //valmistautuu seuraavaan peliin
+        document.getElementById("nextGameButton").disabled = true;
+        document.getElementById("readyButton").disabled = false;
+        } else {
+            // TÄHÄN TULEE PELIN PÄÄTYTTYÄ STATSIT PELISTÄ
+            // KOKONAISPISTEET YMS.
+            console.log("PELI PÄÄTTYI!");
+
+            var titteli;
+
+            if(pointsTotal < 2) {
+                titteli = "Surkimus 🧊";
+            } else if(pointsTotal > 2 && pointsTotal < 300) {
+                titteli = "Huono 🍼";
+            } else if (pointsTotal > 300 && pointsTotal < 1000) {
+                titteli = "Aloittelija 🧸";
+            } else if (pointsTotal > 1000 && pointsTotal < 2000) {
+                titteli = "Harjoittelija 🎀";
+            } else if (pointsTotal > 2000 && pointsTotal < 3000) {
+                titteli = "Kartanlukija 🗺️";
+            } else if (pointsTotal > 3000 && pointsTotal < 4000) {
+                titteli = "Suunnistaja 🧭";
+            } else if (pointsTotal > 4000 && pointsTotal < 4900) {
+                titteli = "Maantieteilijä 🏆";
+            } else if (pointsTotal > 4901 && pointsTotal < 5001) {
+                titteli = "Ihmemies 💎";
+            }
+
+
+            document.getElementById("ansaittu-titteli").innerHTML = titteli;
+            document.getElementById("round-end-text").style.display = "none";
+            document.getElementById("stats-screen").style.display = "block";
+        }
+
+    }
+
+
+</script>
+<script src="functions.js"></script>
+
+
+
+</body>
+</html>
