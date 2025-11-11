@@ -340,7 +340,7 @@
     .green-icon {
         background: #11998e;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to top, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to bottom, #38ef7d, #005aa4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         display: inherit;
         box-shadow: var(--green-shadow);
     }
@@ -348,7 +348,7 @@
     .red-icon {
         background: #ee0979;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, #ff6eb4, #ff0000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: inherit;
     box-shadow: var(--red-shadow);
 
@@ -357,7 +357,7 @@
     .yellow-icon {
         background: #e65c00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, #F9D423, #e60000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: inherit;
     box-shadow: var(--yellow-shadow);
 
@@ -366,7 +366,7 @@
     .pink-icon {
         background: #ff0084;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #970151, #ff76bd);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #970151, #ff76bd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top, #4900e8, #ff76bd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: inherit;
     box-shadow: var(--pink-shadow);
 
