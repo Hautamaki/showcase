@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Builder</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar h2 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .template-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 2px dashed #d1d8e0;
+        }
+
+        .template-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #6a11cb;
+        }
+
+        .template-section h3 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .template-section p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .template-preview {
+            background: white;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            border: 1px solid #eaeaea;
+        }
+
+        .builder-area {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .builder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .builder-header h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(38, 117, 252, 0.4);
+        }
+
+        .newsletter-container {
+            flex: 1;
+            border: 2px dashed #d1d8e0;
+            border-radius: 10px;
+            padding: 25px;
+            min-height: 600px;
+            background: #fafbfc;
+            overflow-y: auto;
+        }
+
+        .newsletter-section {
+            background: white;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-section:hover {
+            border: 1px solid #6a11cb;
+        }
+
+        .section-controls {
+            position: absolute;
+            top: -15px;
+            right: 10px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .newsletter-section:hover .section-controls {
+            opacity: 1;
+        }
+
+        .section-controls button {
+            background: none;
+            border: none;
+            color: #7f8c8d;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: color 0.2s;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-controls button:hover {
+            color: #6a11cb;
+            background: #f5f7fa;
+        }
+
+        .section-title-tag {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #6a11cb;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .newsletter-section:hover .section-title-tag {
+            opacity: 1;
+        }
+
+        .editable {
+            min-height: 30px;
+            padding: 8px;
+            border: 1px dashed transparent;
+            border-radius: 4px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .editable:hover {
+            border-color: #d1d8e0;
+            background: #f8f9fa;
+        }
+
+        .editable:focus {
+            outline: none;
+            border-color: #6a11cb;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.1);
+        }
+
+        .editable-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .editable-btn:hover {
+            background: #2980b9;
+        }
+
+        .text-toolbar {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+
+        .editable:hover .text-toolbar,
+        .editable:focus .text-toolbar,
+        .editable-btn:hover .text-toolbar {
+            opacity: 1;
+        }
+
+        .text-toolbar button {
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+            transition: all 0.2s ease;
+        }
+
+        .text-toolbar button:hover {
+            background: #f0f2f5;
+            color: #6a11cb;
+        }
+
+        .text-toolbar button.active {
+            background: #6a11cb;
+            color: white;
+        }
+
+        .section-toolbar {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+
+        .newsletter-section:hover .section-toolbar {
+            opacity: 1;
+        }
+
+        .section-toolbar button {
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+            transition: all 0.2s ease;
+        }
+
+        .section-toolbar button:hover {
+            background: #f0f2f5;
+            color: #6a11cb;
+        }
+
+        .section-toolbar button.active {
+            background: #6a11cb;
+            color: white;
+        }
+
+        .color-picker-popup {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .color-picker-popup.show {
+            display: flex;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+            border-color: #6a11cb;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+
+        .font-size-picker {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .font-size-picker.show {
+            display: flex;
+        }
+
+        .font-size-option {
+            padding: 5px 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .font-size-option:hover {
+            background: #f0f2f5;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            background: #f0f2f5;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 0 auto;
+            border: 2px dashed #d1d8e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .placeholder-image:hover {
+            border-color: #6a11cb;
+            background: #e8f4ff;
+        }
+
+        .placeholder-image i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+
+        .uploaded-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            max-height: 300px;
+            border-radius: 6px;
+            margin: 0 auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .image-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover .image-controls {
+            opacity: 1;
+        }
+
+        .image-controls button {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .image-controls button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #d1d8e0;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .modal-header h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+
+        .code-container {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .upload-area {
+            border: 2px dashed #d1d8e0;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #6a11cb;
+            background: #f8f9fa;
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            margin-bottom: 15px;
+            color: #7f8c8d;
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 15px auto;
+            display: none;
+            border-radius: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eaeaea;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-newspaper"></i> Newsletter Builder</h1>
+        <p>Drag and drop sections to create your perfect newsletter</p>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Template Sections</h2>
+            <div class="template-section" data-type="header">
+                <h3>Header Section</h3>
+                <p>Add a title and subtitle to your newsletter</p>
+                <div class="template-preview">
+                    <h4>Newsletter Title</h4>
+                    <p>Subtitle or brief description</p>
+                </div>
+            </div>
+            
+            <div class="template-section" data-type="image-text">
+                <h3>Image with Text</h3>
+                <p>Image alongside descriptive text</p>
+                <div class="template-preview">
+                    <div style="display:flex; gap:10px;">
+                        <div style="width:40%; background:#e0e0e0; height:60px; border-radius:4px;"></div>
+                        <div style="width:60%; background:#f0f0f0; height:60px; border-radius:4px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="template-section" data-type="text-only">
+                <h3>Text Only</h3>
+                <p>Simple text content section</p>
+                <div class="template-preview">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+            </div>
+            
+            <div class="template-section" data-type="cta">
+                <h3>Call to Action</h3>
+                <p>Button or link to encourage action</p>
+                <div class="template-preview">
+                    <button style="background:#3498db; color:white; border:none; padding:8px 16px; border-radius:4px;">Learn More</button>
+                </div>
+            </div>
+            
+            <div class="template-section" data-type="footer">
+                <h3>Footer Section</h3>
+                <p>Contact info and social links</p>
+                <div class="template-preview">
+                    <p>Contact us at email@example.com</p>
+                    <div style="display:flex; gap:10px; margin-top:5px;">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="builder-area">
+            <div class="builder-header">
+                <h2>Newsletter Preview</h2>
+                <button class="export-btn" id="exportBtn">
+                    <i class="fas fa-download"></i> Export HTML
+                </button>
+            </div>
+            
+            <div class="newsletter-container" id="newsletterContainer">
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Your newsletter is empty</h3>
+                    <p>Drag sections from the left panel to start building your newsletter</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>Drag and drop to rearrange sections. Hover over sections to see controls. Click on any text or image to edit.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export Newsletter HTML</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <p>Copy the HTML code below to use in your email marketing platform:</p>
+            <div class="code-container" id="exportCode"></div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="copyCodeBtn">
+                    <i class="fas fa-copy"></i> Copy to Clipboard
+                </button>
+                <button class="btn btn-secondary" id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Upload Modal -->
+    <div class="modal" id="imageUploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Image</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload an image or drag and drop</p>
+                <p class="small">Supported formats: JPG, PNG, GIF (Max 5MB)</p>
+                <input type="file" id="imageUpload" class="file-input" accept="image/*">
+            </div>
+            <div class="image-preview-container">
+                <img id="imagePreview" class="image-preview" alt="Image preview">
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="insertImageBtn" disabled>
+                    <i class="fas fa-check"></i> Insert Image
+                </button>
+                <button class="btn btn-secondary" id="cancelImageBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let sectionCount = 0;
+            let currentImageContainer = null;
+            let activeColorPicker = null;
+            let activeFontSizePicker = null;
+            
+            // Color palette options
+            const colorPalette = [
+                '#2c3e50', '#34495e', '#7f8c8d', '#95a5a6', '#bdc3c7',
+                '#6a11cb', '#2575fc', '#3498db', '#2980b9', '#1abc9c',
+                '#16a085', '#27ae60', '#2ecc71', '#f1c40f', '#f39c12',
+                '#e67e22', '#d35400', '#e74c3c', '#c0392b', '#9b59b6',
+                '#ffffff', '#f8f9fa', '#e9ecef', '#dee2e6', '#000000'
+            ];
+            
+            // Font size options
+            const fontSizeOptions = [
+                '12px', '14px', '16px', '18px', '20px', '24px', '28px', '32px'
+            ];
+
+            // Make template sections draggable
+            $(".template-section").draggable({
+                helper: "clone",
+                revert: "invalid",
+                zIndex: 1000
+            });
+            
+            // Make newsletter container droppable
+            $("#newsletterContainer").droppable({
+                accept: ".template-section",
+                drop: function(event, ui) {
+                    const type = ui.draggable.data("type");
+                    addSection(type);
+                    $("#emptyState").hide();
+                }
+            });
+            
+            // Function to add a new section to the newsletter
+            function addSection(type) {
+                sectionCount++;
+                const sectionId = `section-${sectionCount}`;
+                let sectionHtml = '';
+                
+                switch(type) {
+                    case 'header':
+                        sectionHtml = `
+                            <div class="newsletter-section" id="${sectionId}">
+                                <div class="section-title-tag">Header</div>
+                                <div class="section-controls">
+                                    <button class="move-up" title="Move Up"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="move-down" title="Move Down"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="delete-section" title="Delete Section"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="section-toolbar">
+                                    <button class="section-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                    <button class="section-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                    <button class="section-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                    <button class="section-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                </div>
+                                <h1 class="editable" contenteditable="true">
+                                    <div class="text-toolbar">
+                                        <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                        <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                        <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                        <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                        <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                        <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                    </div>
+                                    Your Newsletter Title
+                                </h1>
+                                <p class="editable" contenteditable="true">
+                                    <div class="text-toolbar">
+                                        <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                        <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                        <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                        <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                        <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                        <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                    </div>
+                                    A brief description or subtitle for your newsletter
+                                </p>
+                            </div>
+                        `;
+                        break;
+                    case 'image-text':
+                        sectionHtml = `
+                            <div class="newsletter-section" id="${sectionId}">
+                                <div class="section-title-tag">Image + Text</div>
+                                <div class="section-controls">
+                                    <button class="move-up" title="Move Up"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="move-down" title="Move Down"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="delete-section" title="Delete Section"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="section-toolbar">
+                                    <button class="section-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                    <button class="section-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                    <button class="section-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                    <button class="section-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                    <button class="section-flex-start" title="Align Items Start"><i class="fas fa-object-ungroup"></i></button>
+                                    <button class="section-flex-center" title="Align Items Center"><i class="fas fa-object-group"></i></button>
+                                </div>
+                                <div class="content-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                    <div class="image-part" style="flex: 1; min-width: 200px;">
+                                        <div class="image-container">
+                                            <div class="placeholder-image" data-section="${sectionId}">
+                                                <div>
+                                                    <i class="fas fa-image"></i>
+                                                    <p>Click to upload image</p>
+                                                </div>
+                                            </div>
+                                            <div class="image-controls">
+                                                <button class="change-image" title="Change Image"><i class="fas fa-edit"></i></button>
+                                                <button class="remove-image" title="Remove Image"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-part" style="flex: 2; min-width: 300px;">
+                                        <h2 class="editable" contenteditable="true">
+                                            <div class="text-toolbar">
+                                                <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                                <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                                <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                                <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                                <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                                <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                            </div>
+                                            Section Heading
+                                        </h2>
+                                        <p class="editable" contenteditable="true">
+                                            <div class="text-toolbar">
+                                                <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                                <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                                <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                                <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                                <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                                <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                            </div>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                                        </p>
+                                        <button class="editable-btn">
+                                            <div class="text-toolbar">
+                                                <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                                <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                                <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                                <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                                <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                                <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                            </div>
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'text-only':
+                        sectionHtml = `
+                            <div class="newsletter-section" id="${sectionId}">
+                                <div class="section-title-tag">Text Only</div>
+                                <div class="section-controls">
+                                    <button class="move-up" title="Move Up"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="move-down" title="Move Down"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="delete-section" title="Delete Section"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="section-toolbar">
+                                    <button class="section-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                    <button class="section-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                    <button class="section-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                    <button class="section-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                </div>
+                                <h2 class="editable" contenteditable="true">
+                                    <div class="text-toolbar">
+                                        <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                        <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                        <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                        <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                        <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                        <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                    </div>
+                                    Section Heading
+                                </h2>
+                                <p class="editable" contenteditable="true">
+                                    <div class="text-toolbar">
+                                        <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                        <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                        <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                        <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                        <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                        <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                    </div>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                                <p class="editable" contenteditable="true">
+                                    <div class="text-toolbar">
+                                        <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                        <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                        <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                        <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                        <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                        <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                    </div>
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        `;
+                        break;
+                    case 'cta':
+                        sectionHtml = `
+                            <div class="newsletter-section" id="${sectionId}">
+                                <div class="section-title-tag">Call to Action</div>
+                                <div class="section-controls">
+                                    <button class="move-up" title="Move Up"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="move-down" title="Move Down"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="delete-section" title="Delete Section"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="section-toolbar">
+                                    <button class="section-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                    <button class="section-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                    <button class="section-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                    <button class="section-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                </div>
+                                <div style="text-align: center; padding: 30px 20px; background: #f8f9fa; border-radius: 8px;">
+                                    <h2 class="editable" contenteditable="true">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        Ready to get started?
+                                    </h2>
+                                    <p class="editable" contenteditable="true">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        Join thousands of satisfied customers today
+                                    </p>
+                                    <button class="editable-btn">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        Sign Up Now
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'footer':
+                        sectionHtml = `
+                            <div class="newsletter-section" id="${sectionId}">
+                                <div class="section-title-tag">Footer</div>
+                                <div class="section-controls">
+                                    <button class="move-up" title="Move Up"><i class="fas fa-arrow-up"></i></button>
+                                    <button class="move-down" title="Move Down"><i class="fas fa-arrow-down"></i></button>
+                                    <button class="delete-section" title="Delete Section"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="section-toolbar">
+                                    <button class="section-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                    <button class="section-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                    <button class="section-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                    <button class="section-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                </div>
+                                <div style="text-align: center; padding: 20px; background: #2c3e50; color: white; border-radius: 8px;">
+                                    <h3 class="editable" contenteditable="true" style="color: white;">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        Company Name
+                                    </h3>
+                                    <p class="editable" contenteditable="true" style="color: #ecf0f1;">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        123 Main Street, City, Country
+                                    </p>
+                                    <p class="editable" contenteditable="true" style="color: #ecf0f1;">
+                                        <div class="text-toolbar">
+                                            <button class="text-align-left" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="text-align-center" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="text-align-right" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="text-color" title="Text Color"><i class="fas fa-palette"></i></button>
+                                            <button class="text-bg-color" title="Background Color"><i class="fas fa-fill-drip"></i></button>
+                                            <button class="text-size" title="Font Size"><i class="fas fa-text-height"></i></button>
+                                        </div>
+                                        contact@example.com | (123) 456-7890
+                                    </p>
+                                    <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px;">
+                                        <i class="fab fa-facebook" style="cursor: pointer;"></i>
+                                        <i class="fab fa-twitter" style="cursor: pointer;"></i>
+                                        <i class="fab fa-instagram" style="cursor: pointer;"></i>
+                                        <i class="fab fa-linkedin" style="cursor: pointer;"></i>
+                                    </div>
+                                    <p style="margin-top: 15px; font-size: 0.9rem; color: #bdc3c7;">&copy; 2023 Company Name. All rights reserved.</p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                }
+                
+                $("#newsletterContainer").append(sectionHtml);
+                makeSectionSortable();
+                attachSectionEvents(`#${sectionId}`);
+            }
+            
+            // Make sections sortable
+            function makeSectionSortable() {
+                $("#newsletterContainer").sortable({
+                    handle: ".newsletter-section",
+                    placeholder: "ui-state-highlight",
+                    opacity: 0.7,
+                    revert: true
+                });
+            }
+            
+            // Attach events to section controls
+            function attachSectionEvents(sectionId) {
+                $(sectionId).on("click", ".delete-section", function() {
+                    $(this).closest(".newsletter-section").remove();
+                    
+                    // Show empty state if no sections left
+                    if ($(".newsletter-section").length === 0) {
+                        $("#emptyState").show();
+                    }
+                });
+                
+                $(sectionId).on("click", ".move-up", function() {
+                    const $section = $(this).closest(".newsletter-section");
+                    const $prev = $section.prev(".newsletter-section");
+                    
+                    if ($prev.length) {
+                        $section.insertBefore($prev);
+                    }
+                });
+                
+                $(sectionId).on("click", ".move-down", function() {
+                    const $section = $(this).closest(".newsletter-section");
+                    const $next = $section.next(".newsletter-section");
+                    
+                    if ($next.length) {
+                        $section.insertAfter($next);
+                    }
+                });
+                
+                // Text alignment buttons
+                $(sectionId).on("click", ".text-align-left", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $editable = $(this).closest(".editable, .editable-btn");
+                    $editable.css("text-align", "left");
+                    updateActiveButton($(this).closest(".text-toolbar"), ".text-align-left");
+                });
+                
+                $(sectionId).on("click", ".text-align-center", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $editable = $(this).closest(".editable, .editable-btn");
+                    $editable.css("text-align", "center");
+                    updateActiveButton($(this).closest(".text-toolbar"), ".text-align-center");
+                });
+                
+                $(sectionId).on("click", ".text-align-right", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $editable = $(this).closest(".editable, .editable-btn");
+                    $editable.css("text-align", "right");
+                    updateActiveButton($(this).closest(".text-toolbar"), ".text-align-right");
+                });
+                
+                // Section alignment buttons
+                $(sectionId).on("click", ".section-align-left", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $section = $(this).closest(".newsletter-section");
+                    $section.css("text-align", "left");
+                    updateActiveButton($(this).closest(".section-toolbar"), ".section-align-left");
+                });
+                
+                $(sectionId).on("click", ".section-align-center", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $section = $(this).closest(".newsletter-section");
+                    $section.css("text-align", "center");
+                    updateActiveButton($(this).closest(".section-toolbar"), ".section-align-center");
+                });
+                
+                $(sectionId).on("click", ".section-align-right", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $section = $(this).closest(".newsletter-section");
+                    $section.css("text-align", "right");
+                    updateActiveButton($(this).closest(".section-toolbar"), ".section-align-right");
+                });
+                
+                // Flex alignment buttons
+                $(sectionId).on("click", ".section-flex-start", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $section = $(this).closest(".newsletter-section");
+                    $section.find(".content-container").css("align-items", "flex-start");
+                    updateActiveButton($(this).closest(".section-toolbar"), ".section-flex-start");
+                });
+                
+                $(sectionId).on("click", ".section-flex-center", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $section = $(this).closest(".newsletter-section");
+                    $section.find(".content-container").css("align-items", "center");
+                    updateActiveButton($(this).closest(".section-toolbar"), ".section-flex-center");
+                });
+                
+                // Text color picker
+                $(sectionId).on("click", ".text-color", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $toolbar = $(this).closest(".text-toolbar");
+                    const $editable = $toolbar.closest(".editable, .editable-btn");
+                    
+                    // Close any other open pickers
+                    closeAllPickers();
+                    
+                    // Create or show color picker
+                    let $colorPicker = $toolbar.find(".color-picker-popup");
+                    if ($colorPicker.length === 0) {
+                        $colorPicker = createColorPicker();
+                        $toolbar.append($colorPicker);
+                    }
+                    
+                    $colorPicker.addClass("show");
+                    activeColorPicker = {
+                        element: $editable,
+                        type: 'text-color',
+                        picker: $colorPicker
+                    };
+                });
+                
+                // Text background color picker
+                $(sectionId).on("click", ".text-bg-color", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $toolbar = $(this).closest(".text-toolbar");
+                    const $editable = $toolbar.closest(".editable, .editable-btn");
+                    
+                    // Close any other open pickers
+                    closeAllPickers();
+                    
+                    // Create or show color picker
+                    let $colorPicker = $toolbar.find(".color-picker-popup");
+                    if ($colorPicker.length === 0) {
+                        $colorPicker = createColorPicker();
+                        $toolbar.append($colorPicker);
+                    }
+                    
+                    $colorPicker.addClass("show");
+                    activeColorPicker = {
+                        element: $editable,
+                        type: 'text-bg-color',
+                        picker: $colorPicker
+                    };
+                });
+                
+                // Section background color picker
+                $(sectionId).on("click", ".section-bg-color", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $toolbar = $(this).closest(".section-toolbar");
+                    const $section = $toolbar.closest(".newsletter-section");
+                    
+                    // Close any other open pickers
+                    closeAllPickers();
+                    
+                    // Create or show color picker
+                    let $colorPicker = $toolbar.find(".color-picker-popup");
+                    if ($colorPicker.length === 0) {
+                        $colorPicker = createColorPicker();
+                        $toolbar.append($colorPicker);
+                    }
+                    
+                    $colorPicker.addClass("show");
+                    activeColorPicker = {
+                        element: $section,
+                        type: 'section-bg-color',
+                        picker: $colorPicker
+                    };
+                });
+                
+                // Font size picker
+                $(sectionId).on("click", ".text-size", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $toolbar = $(this).closest(".text-toolbar");
+                    const $editable = $toolbar.closest(".editable, .editable-btn");
+                    
+                    // Close any other open pickers
+                    closeAllPickers();
+                    
+                    // Create or show font size picker
+                    let $fontSizePicker = $toolbar.find(".font-size-picker");
+                    if ($fontSizePicker.length === 0) {
+                        $fontSizePicker = createFontSizePicker();
+                        $toolbar.append($fontSizePicker);
+                    }
+                    
+                    $fontSizePicker.addClass("show");
+                    activeFontSizePicker = {
+                        element: $editable,
+                        picker: $fontSizePicker
+                    };
+                });
+                
+                // Image upload functionality
+                $(sectionId).on("click", ".placeholder-image", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    currentImageContainer = $(this).closest(".image-container");
+                    $("#imageUploadModal").fadeIn();
+                });
+                
+                $(sectionId).on("click", ".change-image", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    currentImageContainer = $(this).closest(".image-container");
+                    $("#imageUploadModal").fadeIn();
+                });
+                
+                $(sectionId).on("click", ".remove-image", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const $container = $(this).closest(".image-container");
+                    $container.find(".uploaded-image").remove();
+                    $container.find(".placeholder-image").show();
+                });
+            }
+            
+            // Helper function to update active button state
+            function updateActiveButton($toolbar, activeClass) {
+                $toolbar.find("button").removeClass("active");
+                $toolbar.find(activeClass).addClass("active");
+            }
+            
+            // Create color picker element
+            function createColorPicker() {
+                const $colorPicker = $('<div class="color-picker-popup"></div>');
+                const $colorPalette = $('<div class="color-palette"></div>');
+                
+                colorPalette.forEach(color => {
+                    const $colorOption = $(`<div class="color-option" style="background-color: ${color};" data-color="${color}"></div>`);
+                    $colorPalette.append($colorOption);
+                });
+                
+                $colorPicker.append($colorPalette);
+                
+                // Handle color selection
+                $colorPicker.on("click", ".color-option", function(e) {
+                    e.stopPropagation();
+                    const color = $(this).data("color");
+                    
+                    if (activeColorPicker) {
+                        if (activeColorPicker.type === 'text-color') {
+                            activeColorPicker.element.css("color", color);
+                        } else if (activeColorPicker.type === 'text-bg-color') {
+                            activeColorPicker.element.css("background-color", color);
+                        } else if (activeColorPicker.type === 'section-bg-color') {
+                            activeColorPicker.element.css("background-color", color);
+                        }
+                    }
+                    
+                    $colorPicker.removeClass("show");
+                    activeColorPicker = null;
+                });
+                
+                return $colorPicker;
+            }
+            
+            // Create font size picker
+            function createFontSizePicker() {
+                const $fontSizePicker = $('<div class="font-size-picker"></div>');
+                
+                fontSizeOptions.forEach(size => {
+                    const $sizeOption = $(`<button class="font-size-option" data-size="${size}">${size}</button>`);
+                    $fontSizePicker.append($sizeOption);
+                });
+                
+                // Handle font size selection
+                $fontSizePicker.on("click", ".font-size-option", function(e) {
+                    e.stopPropagation();
+                    const size = $(this).data("size");
+                    
+                    if (activeFontSizePicker) {
+                        activeFontSizePicker.element.css("font-size", size);
+                    }
+                    
+                    $fontSizePicker.removeClass("show");
+                    activeFontSizePicker = null;
+                });
+                
+                return $fontSizePicker;
+            }
+            
+            // Close all open pickers
+            function closeAllPickers() {
+                $(".color-picker-popup").removeClass("show");
+                $(".font-size-picker").removeClass("show");
+                activeColorPicker = null;
+                activeFontSizePicker = null;
+            }
+            
+            // Close pickers when clicking elsewhere
+            $(document).on("click", function() {
+                closeAllPickers();
+            });
+            
+            // Prevent closing when clicking inside picker
+            $(document).on("click", ".color-picker-popup, .font-size-picker", function(e) {
+                e.stopPropagation();
+            });
+            
+            // Image upload modal functionality
+            $("#imageUpload").on("change", function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert("File size must be less than 5MB");
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $("#imagePreview").attr("src", e.target.result).show();
+                        $("#insertImageBtn").prop("disabled", false);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Drag and drop functionality for upload area
+            $("#uploadArea").on("dragover", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).css({
+                    "border-color": "#6a11cb",
+                    "background": "#f0f8ff"
+                });
+            });
+            
+            $("#uploadArea").on("dragleave", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).css({
+                    "border-color": "#d1d8e0",
+                    "background": "white"
+                });
+            });
+            
+            $("#uploadArea").on("drop", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).css({
+                    "border-color": "#d1d8e0",
+                    "background": "white"
+                });
+                
+                const files = e.originalEvent.dataTransfer.files;
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (file.type.match('image.*')) {
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert("File size must be less than 5MB");
+                            return;
+                        }
+                        
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            $("#imagePreview").attr("src", e.target.result).show();
+                            $("#insertImageBtn").prop("disabled", false);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert("Please select an image file (JPG, PNG, GIF)");
+                    }
+                }
+            });
+            
+            $("#insertImageBtn").on("click", function() {
+                if ($("#imagePreview").attr("src")) {
+                    const imageSrc = $("#imagePreview").attr("src");
+                    
+                    // Remove existing image if any
+                    currentImageContainer.find(".uploaded-image").remove();
+                    
+                    // Create and insert new image
+                    const $img = $('<img class="uploaded-image" src="' + imageSrc + '" alt="Newsletter Image">');
+                    currentImageContainer.find(".placeholder-image").hide().after($img);
+                    
+                    // Close modal and reset
+                    $("#imageUploadModal").fadeOut();
+                    resetImageModal();
+                }
+            });
+            
+            $("#cancelImageBtn, #imageUploadModal .close-modal").on("click", function() {
+                $("#imageUploadModal").fadeOut();
+                resetImageModal();
+            });
+            
+            function resetImageModal() {
+                $("#imagePreview").hide().attr("src", "");
+                $("#imageUpload").val("");
+                $("#insertImageBtn").prop("disabled", true);
+                currentImageContainer = null;
+            }
+            
+            // Export functionality
+            $("#exportBtn").on("click", function() {
+                let htmlContent = `<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">`;
+                
+                $(".newsletter-section").each(function() {
+                    const $section = $(this).clone();
+                    
+                    // Remove controls and section headers
+                    $section.find(".section-controls").remove();
+                    $section.find(".section-title-tag").remove();
+                    $section.find(".image-controls").remove();
+                    $section.find(".section-toolbar").remove();
+                    $section.find(".text-toolbar").remove();
+                    
+                    // Convert editable content to regular content
+                    $section.find("[contenteditable]").each(function() {
+                        $(this).removeAttr("contenteditable");
+                    });
+                    
+                    // Convert editable buttons to regular buttons
+                    $section.find(".editable-btn").each(function() {
+                        const $btn = $(this);
+                        const text = $btn.text().trim();
+                        const styles = $btn.attr('style') || '';
+                        $btn.replaceWith(`<button style="${styles}">${text}</button>`);
+                    });
+                    
+                    // Show placeholder images if no uploaded image
+                    $section.find(".image-container").each(function() {
+                        const $container = $(this);
+                        const $placeholder = $container.find(".placeholder-image");
+                        const $uploadedImage = $container.find(".uploaded-image");
+                        
+                        if ($uploadedImage.length) {
+                            $placeholder.remove();
+                        } else {
+                            $placeholder.removeClass("placeholder-image").css({
+                                "background": "#f0f2f5",
+                                "border": "2px dashed #d1d8e0",
+                                "display": "flex",
+                                "align-items": "center",
+                                "justify-content": "center",
+                                "height": "200px",
+                                "border-radius": "6px"
+                            }).html('<div><i class="fas fa-image"></i><p>Image Placeholder</p></div>');
+                        }
+                    });
+                    
+                    htmlContent += $section.prop('outerHTML');
+                });
+                
+                htmlContent += `</div>`;
+                
+                $("#exportCode").text(htmlContent);
+                $("#exportModal").fadeIn();
+            });
+            
+            // Close modal
+            $(".close-modal, #closeModalBtn").on("click", function() {
+                $("#exportModal").fadeOut();
+            });
+            
+            // Copy to clipboard
+            $("#copyCodeBtn").on("click", function() {
+                const code = $("#exportCode").text();
+                navigator.clipboard.writeText(code).then(function() {
+                    $("#copyCodeBtn").html('<i class="fas fa-check"></i> Copied!');
+                    
+                    setTimeout(function() {
+                        $("#copyCodeBtn").html('<i class="fas fa-copy"></i> Copy to Clipboard');
+                    }, 2000);
+                });
+            });
+            
+            // Close modal when clicking outside
+            $(window).on("click", function(event) {
+                if ($(event.target).is(".modal")) {
+                    $(".modal").fadeOut();
+                    resetImageModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

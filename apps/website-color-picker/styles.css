@@ -1,0 +1,105 @@
+nav {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+} nav > div {
+    display: flex;
+    gap: 20px;
+} 
+nav a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.spacer-small {
+    height: 10px;
+}
+
+.center-text {
+    text-align: center; 
+}
+
+.overlay-img {
+    position: relative;
+    display: inline-block; /* or block, depending on your layout */
+}
+.overlay-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5); /* Red with 50% opacity */
+    mix-blend-mode: multiply; /* Experiment with different blend modes */
+    border-radius: 8px;
+}
+
+.overlay-img img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+section {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.info-section {
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    padding: 40px 50px;
+} .info-section h2 {
+    margin-top: 0;
+}
+
+section img {
+    width: 50%;
+}
+
+p {
+    opacity: 0.5;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.inner-content {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.pricing-cards {
+    display: flex;
+}
+.pricing-cards > div {
+    width: calc(100% / 3 - 20px);
+    margin: auto;
+    border-radius: 6px;
+} 
+
+.coming-soon-tag p{
+    color: blue !important;
+}
+
+ul li {
+    color: rgb(170, 170, 170) !important;
+    font-size: 18px !important;
+}
+
+span {
+    background-color: rgb(68, 68, 68);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+

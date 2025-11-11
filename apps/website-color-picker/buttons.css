@@ -1,0 +1,38 @@
+.buttons {
+    margin-top: 100px;
+    display: flex;
+    gap: 20px;
+
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+} 
+
+.button-main {
+    color: white;
+    background-color: black;
+    padding: 10px 32px;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.button-secondary {
+    color: black;
+    padding: 10px 32px;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.unavailable {
+    background-color: rgb(126, 126, 126) !important;
+} .unavailable:hover {
+    background-color: rgb(126, 126, 126) !important;
+    cursor: not-allowed !important;
+}

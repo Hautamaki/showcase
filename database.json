@@ -97,22 +97,6 @@
       }
     },
     {
-      "id": 5,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "blue-icon",
-      "category": "nettisivu",
-      "heading": "Virtuaalimaailmat",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": ""
-      },
-      "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
-      }
-    },
-    {
       "id": 6,
       "icon": "global-svgrepo-com.svg",
       "iconcolor": "blue-icon",
@@ -156,8 +140,8 @@
         "date": "2020"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Luo vahva salasana",
+        "content": ""
       }
     },
     {
@@ -172,8 +156,8 @@
         "date": "2025"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Luo helposti väripaletti nettisivuillesi",
+        "content": "<a target='_blank' href='apps/website-color-picker'>Kokeile</a>"
       }
     },
     {
@@ -188,8 +172,8 @@
         "date": "2024"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Löydä kaikki sanat taulukosta",
+        "content": "<button>Kokeile peliä</button>"
       }
     },
     {
@@ -204,8 +188,8 @@
         "date": "2022"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Kuinka hyvin tunnistat suomen nähtävyyksiä kartalta?",
+        "content": ""
       }
     },
     {
@@ -220,8 +204,8 @@
         "date": "2025"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Drag & Drop tyylinen uutiskirjeen rakentaja",
+        "content": ""
       }
     },
     {
@@ -236,8 +220,8 @@
         "date": "2024"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Aputyökalu nettisivun rakenteen",
+        "content": ""
       }
     },
     {
@@ -252,8 +236,8 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Aputyökalu liukuvärien valitsemiseen",
+        "content": ""
       }
     },
     {
@@ -284,8 +268,8 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Design Systemin perustaminen",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
+        "heading": "Kevyt piirtosovellus nopeisiin doodlailuihin",
+        "content": ""
       }
     },
     {
@@ -301,23 +285,7 @@
       },
       "article": {
         "heading": "Työpöytäsivu",
-        "content": "Aloitimme uuden design systemin suunnittelun. Määrittelimme väripaletin, typografian ja peruskomponentit. Ensimmäiset komponentit ovat nyt käytössä ja kehittäjien palaute on ollut positiivista."
-      }
-    },
-    {
-      "id": 20,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "yellow-icon",
-      "category": "atk",
-      "heading": "Kuvapankki",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Työpöytäsivu",
-        "content": "<img src='images/tafira.png'>"
+        "content": ""
       }
     },
     {
@@ -332,7 +300,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen uudistus & ylläpito",
         "content": "<img src='images/spiella.png'>"
       }
     },
@@ -348,7 +316,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen uudistus & ylläpito",
         "content": "<img src='images/freja.png'>"
       }
     },
@@ -364,7 +332,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen ylläpito",
         "content": "<img src='images/nokkalan-majakka.png'>"
       }
     },
@@ -380,7 +348,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen ylläpito",
         "content": "<img src='images/hotel-levi-panorama.png'>"
       }
     },
@@ -396,7 +364,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen uudistus & ylläpito",
         "content": "<img src='images/ravintola-knitter.png'>"
       }
     },
@@ -412,7 +380,7 @@
         "date": "2023"
       },
       "article": {
-        "heading": "Työpöytäsivu",
+        "heading": "Nettisivujen ylläpito",
         "content": "<img src='images/hotel-matts.png'>"
       }
     }
