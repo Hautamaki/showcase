@@ -31,5 +31,8 @@
     main {
         display: block;
     }
+    .image-with-text img {
+        max-width: 50%;
+    }
 }
 
