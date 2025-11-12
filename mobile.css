@@ -20,8 +20,14 @@
         left: 0;
         display: none;
     }
+    #articleName {
+        margin-top: 50px;
+    }
     #back-to-main-screen {
         display: block;
+        position: fixed;
+        width: calc(100% - 30px);
+        background-color: var(--button-background);
     }
     button {
         margin-bottom: 8px;
