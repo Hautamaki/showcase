@@ -17,19 +17,22 @@
                     <h1>Projekteja listattuna</h1>
 
                 </div>
-                <div class="settings">
-                    <p onclick="changeTheme('dark-blue')"><img src="icons/contrast-svgrepo-com.svg" alt=""></p>
+                <div>
+                    <div onclick="changeTheme('dark-blue')" class="settings">
+                        <p ><img src="icons/contrast-svgrepo-com.svg" alt=""></p>
+                    </div>
+                    
                 </div>
             </div>
             <p>Täältä pääset näkemään IT-töitäni sekä projekteja joissa olen ollut mukana että myös harrasteluita.</p>
             <h2>Valitse projektit kategorian mukaan</h2>
             <div class="search-options">
-                <button onclick="showcategory.call(this, '')" class="selected">Näytä kaikki</button>
-                <button onclick="showcategory.call(this, 'nettisivu')"><div class="ball blue-icon"></div>Nettisivu</button>
-                <button onclick="showcategory.call(this, 'iot')"><div class="ball pink-icon"></div>IOT-projekti</button>
-                <button onclick="showcategory.call(this, 'atk')"><div class="ball yellow-icon"></div>Aputyökalu</button>
+                <button onclick="showcategory('', event)" class="selected">Näytä kaikki</button>
+                <button onclick="showcategory('nettisivu', event)"><div class="ball blue-icon"></div>Nettisivu</button>
+                <button onclick="showcategory('iot', event)"><div class="ball pink-icon"></div>IOT-projekti</button>
+                <button onclick="showcategory('atk', event)"><div class="ball yellow-icon"></div>Aputyökalu</button>
                 <!-- <button onclick="showcategory.call(this, '')">Virtuaalimaailmat</button> -->
-                <button onclick="showcategory.call(this, 'peli')"><div class="ball red-icon"></div>Peli</button>
+                <button onclick="showcategory('peli', event)"><div class="ball red-icon"></div>Peli</button>
                 <!-- <button onclick="showcategory.call(this, 'modi')"><div class="ball green-icon"></div>Modit</button> -->
             </div>
         </div>

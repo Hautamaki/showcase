@@ -58,18 +58,18 @@ function scrollToTop() {
   window.scrollTo(0, 0);
 }
 
-function showcategory(selectedCategory) {
-    const allCategories = document.querySelectorAll('[onclick*="showcategory"]');
-    allCategories.forEach(el => {
-        el.classList.remove('selected');
-    });
+function showcategory(selectedCategory, event) {
+  const allCategories = document.querySelectorAll('[onclick*="showcategory"]');
+  allCategories.forEach(el => {
+      el.classList.remove('selected');
+  });
 
-    // Add selected class to clicked button
-    event.target.classList.add('selected');
-    
-    // Update the category and list projects
-    category = selectedCategory;
-    listProjects(data, category);
+  // Use currentTarget instead of target
+  event.currentTarget.classList.add('selected');
+  
+  // Update the category and list projects
+  category = selectedCategory;
+  listProjects(data, category);
 }
 
 function changeTheme() {
