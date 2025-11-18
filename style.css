@@ -313,9 +313,12 @@
         display: flex;
         margin-top: 50px;
         margin-bottom: 50px;
-    } article .image-with-text > img + div p {
+    } article .image-with-text > img + p, article .image-with-text > img + div  {
         margin-left: 30px;
+    } article .image-with-text >  p + img, article .image-with-text > div + img {
+        margin-right: 30px;
     }
+
     #back-to-main-screen {
         display: none;
         color: var(--heading-color);

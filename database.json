@@ -77,7 +77,7 @@
       },
       "article": {
         "heading": "Nettisivujen uudistus & ylläpito",
-        "content": "<img src='images/freja.png'>"
+        "content": "<img src='images/freja.png'> <h3></h3> <p>Ravintola Freja on Espoon Matinkylässä Hotelli Mattsin yhteydessä sijaitseva ravintola.</p>"
       }
     },
     {
@@ -125,7 +125,7 @@
       },
       "article": {
         "heading": "Luo helposti väripaletti nettisivuillesi",
-        "content": "<a target='_blank' href='apps/website-color-picker'>Kokeile</a>"
+        "content": "             <img src='images/colorpalette2.png'> <a target='_blank' href='apps/varipaletti'>Kokeile</a>             <h3>Miten generaattori toimii?</h3>            <p>Käyttäjä voi luoda satunnaisesti generoidun väripaletin ja hyödyntää sitä nettisivukehityksessä. Ominaisuuksina löytyy myös väripalettien tallentaminen selaimen musitiin. Nyt uutena ominaisuutena käyttäjä voi myös lukita värejä.</p>                        <div class='image-with-text'><img src='images/colorpalette1.png'> <p>Sivun alalaidassa olevasta palkista löytyy sovelluksen kaikki ominaisuudet.</p></div>            <div class='image-with-text'><p>Voit kokeilla luoda oman väripaletin tai selailla minun valitsemiani paletteja.</p><img src='images/colorpalette3.png'> </div>"
       }
     },
     {
@@ -205,7 +205,7 @@
       },
       "article": {
         "heading": "Nettisivujen ylläpito",
-        "content": "<img src='images/nokkalan-majakka.png'>"
+        "content": "<img src='images/nokkalan-majakka.png'> <h3>Nettisivujen ylläpitoa</h3>"
       }
     },
     {

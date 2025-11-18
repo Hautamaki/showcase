@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Color Picker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="color-picker.css">
+</head>
+<body class="color2-background">
+
+    <!-- Floating settings tab start-->
+    <div id="floating-settings-tab">
+        <div id="floating-settings-menu">
+            <div class="menu-navigation">
+                <p class="menu-item active" data-target="page1">Color</p>
+                <p class="menu-item" data-target="page2">Settings</p>
+                <p class="menu-item" data-target="page3">Explore</p>
+            </div>
+            <div id="page1" class="page">
+
+                <p><b>Current palette</b></p>
+                    <div class="floating-current-palette-holder">
+                        <div class="color" id="floating-current-palette-color1"><p>#ffffff</p><img onclick="lockThisColor(this)" id="color1" src="icons/lock-opened.svg" alt=""></div>
+                        <div class="color" id="floating-current-palette-color2"><p>#ffffff</p><img onclick="lockThisColor(this)" id="color2" src="icons/lock-opened.svg" alt=""></div>
+                        <div class="color" id="floating-current-palette-color3"><p>#ffffff</p><img onclick="lockThisColor(this)" id="color4" src="icons/lock-opened.svg" alt=""></div>
+                    </div>
+                <div class="spacer-small"></div>
+                <p><b>Favorites</b></p>
+                <div id="listfavoritepalettes">
+    
+                </div>
+            </div>
+            <div id="page2" class="page" style="display:none;">
+               <p><b>Settings</b></p>
+                <p class="small-text">Browse and delete data saved in your browser.</p>
+                <div class="spacer-small"></div>
+                <div class="delete-button">
+                    <img src="icons/trash.svg" alt="">
+                    <p class="delete-text" onclick="deleteSessionStorage()">Delete session data</p>
+                </div>
+                <div class="delete-button">
+                    <img src="icons/trash.svg" alt="">
+                    <p class="delete-text" onclick="deleteBrowserStorage()">Delete all favourites</p>
+                </div>
+            </div>
+            <div id="page3" class="page" style="display:none;">
+                <p><b>Explore palettes</b> <span>COMING SOON!</span></p>
+                <p class="small-text">Nice palettes hand picked for you by <i>me</i>.</p>
+                
+                <div id="listexplorepalettes">
+
+                </div>
+
+
+                <div class="spacer-small"></div>
+                <p><b>New features</b></p>
+                <ul>
+                    <li>Explore tab where user can see hand picked palettes.</li>
+                    <li>Ability to select your favourited palette and it shows in the app.</li>
+                    <li>Ability to remove all favourites / browser data.</li>
+                    <li>Ability to add palettes to favourites.</li>
+                    <li>Ability to lock colors.</li>
+                </ul>
+             </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <img class="floating-tab-button" onclick="generateNewPalette()" src="icons/random.svg" alt="">
+                <img class="floating-tab-button" onclick="addPaletteToFavorites()" id="add-to-favourite-button" src="icons/empty-heart.svg" alt="">
+                <img class="floating-tab-button" id="undo-button" onclick="undo()" src="icons/undo.svg" alt="">
+                <img class="floating-tab-button" id="redo-button" onclick="redo()" src="icons/redo.svg" alt="">
+            </div>
+            <div>
+                <img class="floating-tab-button" onclick="openSettingsTab()" src="icons/more.svg" alt="">
+            </div>
+            <!-- <p class="floating-setting-tab-button" onclick="generateNewPalette()">Randomize colors</p> -->
+        </div>
+
+    </div>
+    <!-- Floating settings tab end -->
+
+    <section>
+        
+            <nav>
+                <div>
+                    <a href="#">Logo</a>
+                </div>
+                <div>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Services</a>
+                </div>
+                <div>
+                    <a href="#">Login</a>
+                </div>
+            </nav>
+        
+        <div class="inner-content">
+            <h1 class="color1-font">Different colorschemes for your website <br> with interactive palette generator</h1>
+            <p class="half-width color3-font">Test out different color combinations and palettes easily in this color generator to see which colors best suit your company or for inpiration for other projects.</p>
+            <p class="half-width color3-font"> There are plenty of color palette generators for websites, but this is the simpliest one.</p>    
+            <div class="buttons">
+                <a class="button-main color4-background color4-border color2-font" href="#">RANDOMIZE COLORS</a>
+                <a class="button-secondary color4-border color4-font" href="#">CHANGE SETTINGS</a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section>
+        <h2 class="color1-font">This website is a bit bland, <br> let's give it some color with the generator.</h2>
+        <p class="color3-font half-width">Make it looke better with colors by clicking on the randomize colors button.</p>
+        <p class="color3-font half-width">You can also favourite color palettes by clicking on the heart icon on the floating tab.
+            You can also change plenty of settings that affect the way the colors are generated to make sure you find the best colors for your needs.
+        </p>
+        <div class="buttons">
+            <a class="button-main color4-background color4-border color2-font" href="#">CLICK HERE TO ADD SOME COLOR</a>
+            <p>You can easily</p>
+        </div>
+        <!-- <h3 class="color1-font">Change the colors of this site with theses blocks.</h3> -->
+    </section>
+
+    <!-- <section class="info-section color4-background">
+        <h2 class="color2-font">Which colors best suit your needs?</h2>
+        <p class="color2-font">People will find colorful websites more interesting and they will also remember those better. <br> That means your website will stand out amongst other businesses <br> that don't use nice colors on their website.</p>
+        <div class="buttons">
+            <a class="button-main color2-background color2-border" href="#">RANDOMIZE COLORS</a>
+            <a class="button-secondary" href="#">CHANGE SETTINGS</a>
+        </div>
+    </section> -->
+
+    <!-- <section>
+        <div class="overlay-img">
+            <img src="imgs/vita-vilcina-VMLGC5A3QTE-unsplash.jpg" alt="">
+        </div>
+    </section> -->
+
+    <!-- <section>
+        <h2 class="color3-font">Remember to save the palettes you like to favorites</h2>
+        <p class="color3-font">You can see your favourite palettes from your profile or here.</p>
+    </section> -->
+
+    <!-- <section>
+        <h2 class="color3-font">Palette generator still in development</h2>
+        <p class="color3-font">If you encounter bugs or mistakes, please contact us so we can perfect our app.</p>
+        <p class="color3-font">You can also request features that you want to make this app wven better.</p>
+    </section> -->
+
+    <!-- <section>
+        <h2 class="color3-font">We love to create small but <br> helpful apps that help developers</h2>
+    </section> -->
+
+    <!-- <section>
+        <h2 class="color3-font">We are also building a new website maker.</h2>
+        <p class="color3-font">Subscribe to our newsletter if you want to see more</p>
+    </section>     -->
+
+    <!-- <section>
+        <div class="pricing-cards">
+            <div class="color4-background">
+                <h3>Hello</h3>
+            </div>
+            <div class="color4-background">
+                <h3>Cruel</h3>
+            </div>
+            <div class="color4-background">
+                <h3>World</h3>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <section>
+        <h2 class="center-text color3-font">Here's how it works</h2>
+        <div></div>
+    </section>
+
+    <footer class="color1-background">
+        <h2>Thatis</h2>
+    </footer> -->
+
+</body>
+<script src="jquery.js"></script>
+<script src="functions.js"></script>
+</html>
