@@ -9,7 +9,7 @@
       "description": "",
       "metainfo": {
         "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
+        "date": "2024"
       },
       "article": {
         "heading": "Putkitelevision piirilevyn hyödyntäminen <br> LED-valojen ohjaukseen",
@@ -45,7 +45,7 @@
       },
       "article": {
         "heading": "Renter nettisivujen suunnittelu & toteutus",
-        "content": "<img src='images/renterr.png'> <h3>Mikä on Renter?</h3> <p>Renter on paikka jossa vuokranantajat löytävät vuokralaiset toimitiloille sekä tarjoaa myös huoltopalvelua kiinteistöille.</p> <h3>Projektin alku</h3> <p>Tässä projektissä pääsin mukaan nettisivujen suunnitteluun jo alusta asti kun projekti oli vielä harkinnassa. Vaatimukset ulkoasuun olivat yksinkertaiset - niiden täytyi erottua joukosta ja olla värikkäät.</p> <div class='image-with-text'><img src='images/renter2.png'><img src='images/renter3.png'></div> <h3>Projektin tavoite</h3> <p>Ihan alusta asti Renterin tavoite on ollut mullistaa toimitilojen vuokraus yksinkertaisesti parhaalla mahdollisella asiakaspalvelulla ja toteuttaa se leikkisällä, värikkäällä ja rennolla - 'ei niin vakavalla' - markkinoinnilla sekä ulkoasulla.</p>"
+        "content": "<img src='images/renterr.png'> <h3>Mikä on Renter?</h3> <p>Renter on paikka jossa vuokranantajat löytävät vuokralaiset toimitiloille sekä tarjoaa myös huoltopalvelua kiinteistöille.</p> <h3>Projektin alku</h3> <p>Tässä projektissä pääsin mukaan nettisivujen suunnitteluun jo alusta asti kun projekti oli vielä harkinnassa. Vaatimukset ulkoasuun olivat yksinkertaiset - niiden täytyi erottua joukosta ja olla värikkäät.</p> <div class='image-with-text'><img src='images/renter2.png'><p>Nettisivun etusivu.</p></div> <div class='image-with-text'><p>Hakiessasi toimitiloja hakukriteereilläsi</p><img src='images/renter3.png'></div> <h3>Projektin tavoite</h3> <p>Ihan alusta asti Renterin tavoite on ollut mullistaa toimitilojen vuokraus yksinkertaisesti parhaalla mahdollisella asiakaspalvelulla ja toteuttaa se leikkisällä, värikkäällä ja rennolla - 'ei niin vakavalla' - markkinoinnilla sekä ulkoasulla.</p>"
       }
     },
     {
@@ -245,7 +245,7 @@
       "icon": "global-svgrepo-com.svg",
       "iconcolor": "blue-icon",
       "category": "nettisivu",
-      "heading": "Skeula",
+      "heading": "Mkeula",
       "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
       "metainfo": {
         "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
