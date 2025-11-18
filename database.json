@@ -49,19 +49,67 @@
       }
     },
     {
-      "id": 8,
+      "id": 19,
       "icon": "global-svgrepo-com.svg",
       "iconcolor": "yellow-icon",
       "category": "atk",
-      "heading": "Salasana generaattori",
+      "heading": "Aloitus-sivu",
       "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
       "metainfo": {
         "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2020"
+        "date": "2023"
       },
       "article": {
-        "heading": "Luo vahva salasana",
-        "content": ""
+        "heading": "Työpöytäsivu",
+        "content": "<img src='images/aloitus.png'> <h3>Sovelluksen käyttötarkoitus</h3> <p>Näin IT-alan ammattilaisena usein linkkejä tärkeille sivustoille on hyvä pitää tallessa yhdessä paikassa. Siitä lähti idea rakentaa oma työpöytämainen nettisivu, johon voi tallentaa tärkeitä linkkejä.</p> <p>Sovelluksen idea kasvoi ja kehitin lisää ominaisuuksia. Esimerkiksi muistiinpanojen lisääminen, sää ja laskin.</p>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Ravintola Freja",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Nettisivujen uudistus & ylläpito",
+        "content": "<img src='images/freja.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Spiella",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Nettisivujen uudistus & ylläpito",
+        "content": "<img src='images/spiella.png'>"
+      }
+    },
+    {
+      "id": 20,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "blue-icon",
+      "category": "nettisivu",
+      "heading": "Ravintola Knitter",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2023"
+      },
+      "article": {
+        "heading": "Nettisivujen uudistus & ylläpito",
+        "content": "<img src='images/ravintola-knitter.png'> <p>Nettisivut päivitettiin vanhasta Joomla-järjestelmästä moderniin WordPressiin. Samalla ulkoasua, kuvia ja sisältöjä sekä toiminnallisuuksia paranneltiin.</p>"
       }
     },
     {
@@ -113,6 +161,22 @@
       }
     },
     {
+      "id": 8,
+      "icon": "global-svgrepo-com.svg",
+      "iconcolor": "yellow-icon",
+      "category": "atk",
+      "heading": "Salasana generaattori",
+      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
+      "metainfo": {
+        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
+        "date": "2020"
+      },
+      "article": {
+        "heading": "Luo vahva salasana",
+        "content": ""
+      }
+    },
+    {
       "id": 13,
       "icon": "global-svgrepo-com.svg",
       "iconcolor": "yellow-icon",
@@ -126,54 +190,6 @@
       "article": {
         "heading": "Aputyökalu nettisivun rakenteen",
         "content": ""
-      }
-    },
-    {
-      "id": 19,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "yellow-icon",
-      "category": "atk",
-      "heading": "Aloitus-sivu",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Työpöytäsivu",
-        "content": "<img src='images/aloitus.png'> <h3>Sovelluksen käyttötarkoitus</h3> <p>Näin IT-alan ammattilaisena usein linkkejä tärkeille sivustoille on hyvä pitää tallessa yhdessä paikassa. Siitä lähti idea rakentaa oma työpöytämainen nettisivu, johon voi tallentaa tärkeitä linkkejä.</p> <p>Sovelluksen idea kasvoi ja kehitin lisää ominaisuuksia. Esimerkiksi muistiinpanojen lisääminen, sää ja laskin.</p>"
-      }
-    },
-    {
-      "id": 20,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "blue-icon",
-      "category": "nettisivu",
-      "heading": "Spiella",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Nettisivujen uudistus & ylläpito",
-        "content": "<img src='images/spiella.png'>"
-      }
-    },
-    {
-      "id": 20,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "blue-icon",
-      "category": "nettisivu",
-      "heading": "Ravintola Freja",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Nettisivujen uudistus & ylläpito",
-        "content": "<img src='images/freja.png'>"
       }
     },
     {
@@ -206,22 +222,6 @@
       "article": {
         "heading": "Nettisivujen ylläpito",
         "content": "<img src='images/hotel-levi-panorama.png'>"
-      }
-    },
-    {
-      "id": 20,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "blue-icon",
-      "category": "nettisivu",
-      "heading": "Ravintola Knitter",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Nettisivujen uudistus & ylläpito",
-        "content": "<img src='images/ravintola-knitter.png'> <p>Nettisivut päivitettiin vanhasta Joomla-järjestelmästä moderniin WordPressiin. Samalla ulkoasua, kuvia ja sisältöjä sekä toiminnallisuuksia paranneltiin.</p>"
       }
     },
     {
