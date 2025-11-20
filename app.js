@@ -4,6 +4,15 @@ let category = '';
 let filteredProjects = [];
 let isViewedOnMobile;
 
+const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const metaThemeColor = document.querySelector("meta[name=theme-color]");
+if (userPreferredTheme) {
+  metaThemeColor.setAttribute("content", "#000000");
+} else {
+  metaThemeColor.setAttribute("content", "#ffffff");
+}
+
 async function loadJSON() {
     try {
       const response = await fetch('database.json');
@@ -76,10 +85,13 @@ function changeTheme() {
   let loadedTheme = themeManager.getSavedTheme();
   if (loadedTheme == "light") {
     themeManager.setTheme("dark-blue");
+    metaThemeColor.setAttribute("content", "#ffffff");
   } else if (loadedTheme == "dark-blue") {
-    themeManager.setTheme("deep-dark")
+    themeManager.setTheme("deep-dark");
+    metaThemeColor.setAttribute("content", "#ffffff");
   } else {
-    themeManager.setTheme("light")
+    themeManager.setTheme("light");
+    metaThemeColor.setAttribute("content", "#000000");
   }
 }
 
