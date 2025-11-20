@@ -38,8 +38,27 @@
     main {
         display: block;
     }
+    .image-with-text {
+        flex-direction: column;
+    }
     .image-with-text img {
-        max-width: 50%;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .image-with-text p {
+        width: 100% !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .image-with-text > img + div, .image-with-text > div + img {
+        margin: 0 !important;
+    }
+    .image-with-text > img + p, .image-with-text > p + img {
+        margin: 0 !important;
     }
 }
 
