@@ -332,6 +332,9 @@
     article .image-with-text img {
         max-width: 50%;
     }
+    article .image-with-text p {
+        width: 50%;
+    }
      article .image-with-text > img + p, article .image-with-text > img + div  {
         margin-left: 30px;
     } article .image-with-text >  p + img, article .image-with-text > div + img {

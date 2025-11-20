@@ -3,6 +3,7 @@ let data;
 let category = '';
 let filteredProjects = [];
 let isViewedOnMobile;
+let isFirstTime = true;
 
 const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -53,7 +54,12 @@ function listProjects(data, category) {
     // Show the first project in the filtered list
     if (filteredProjects.length > 0) {
       if(!isViewedOnMobile) {
-        showArticle(0);
+        if(isFirstTime == false) {
+          console.log("ijafhafai")
+          checkUrlParameters();
+        } else {
+          showArticle(0);
+        }
       }
     } else {
         // Clear article content if no projects
@@ -110,6 +116,8 @@ function isMobileView() {
 }
 
 function showArticle(filteredIndex) {
+  isFirstTime = false;
+
   scrollToTop();
 
   if(isViewedOnMobile) {
@@ -150,5 +158,6 @@ document.getElementById("articleHeading").addEventListener('animationend', () =>
   document.getElementById("articleHeading").classList.remove('slowshow');
   document.getElementById("articleContent").classList.remove('slowshow');
 });
+
 
 window.addEventListener('resize', isMobileView);
