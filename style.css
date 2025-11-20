@@ -6,6 +6,8 @@
 
         --background-gray: #dbe4e8;
         --background-gray-dark: #cbcbcb;
+        --site-background: linear-gradient(to top, var(--background-gray-dark), var(--background-gray));
+
         --text-color: rgb(77, 76, 76);
 
         --a-color: rgb(66, 154, 255);
@@ -39,6 +41,9 @@
 
         --background-gray: #2d3748;
         --background-gray-dark: #1a202c;
+        --site-background: radial-gradient(ellipse at bottom, #328CBA 0%, #14264F 100%);
+        --site-background: radial-gradient(ellipse at bottom, var(--background-gray), var(--background-gray-dark));
+        
         --text-color: #96a0ac;
 
         --a-color: rgb(220, 219, 219);
@@ -66,6 +71,8 @@
 
         --background-gray: #1e1e1e;
         --background-gray-dark: #121212;
+        --site-background: linear-gradient(to top, var(--background-gray-dark), var(--background-gray));
+       
         --text-color: #929292;
 
         --a-color: rgb(66, 154, 255);
@@ -104,8 +111,9 @@
     body {
         background-color: var(--background-gray);
         background: linear-gradient(to top, var(--background-gray-dark), var(--background-gray));
+        background: var(--site-background);
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         min-height: 100vh;
     }
 
