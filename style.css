@@ -315,10 +315,10 @@
     }
     article img {
         width: 100%;
-        max-height: 150px;
+        max-height: 250px;
         margin-bottom: 30px;
         border-radius: 5px;
-        object-fit: cover;
+        object-fit:cover;
     }
 
     article .image-with-text {
@@ -327,7 +327,11 @@
         display: flex;
         margin-top: 50px;
         margin-bottom: 50px;
-    } article .image-with-text > img + p, article .image-with-text > img + div  {
+    }
+    article .image-with-text img {
+        max-width: 50%;
+    }
+     article .image-with-text > img + p, article .image-with-text > img + div  {
         margin-left: 30px;
     } article .image-with-text >  p + img, article .image-with-text > div + img {
         margin-right: 30px;
