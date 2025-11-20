@@ -43,7 +43,7 @@
         --background-gray-dark: #1a202c;
         --site-background: radial-gradient(ellipse at bottom, #328CBA 0%, #14264F 100%);
         --site-background: radial-gradient(ellipse at bottom, var(--background-gray), var(--background-gray-dark));
-        
+
         --text-color: #96a0ac;
 
         --a-color: rgb(220, 219, 219);
@@ -119,6 +119,9 @@
 
     h1, h2, h3 {
         color: var(--heading-color);
+    }
+    h2 {
+        /* font-weight: 500; */
     }
 
     a {
@@ -288,6 +291,9 @@
         /* animation */
         opacity: 0;
         animation: slowshow 1.5s ease-out forwards;
+    }
+    .non-bold {
+        font-weight: 400 !important;
     }
 
     @keyframes slowshow {
