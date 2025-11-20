@@ -13,7 +13,7 @@
       },
       "article": {
         "heading": "Putkitelevision piirilevyn hyödyntäminen <br> LED-valojen ohjaukseen",
-        "content": "                           <img src='images/lights-change.gif'>                    <h3>Miten baarikaappi toimii?</h3>                    <p>Baarikaappi on rakennettu vanhaan Saloran putkitelevision runkoon sekä lisätty Arduino Uno ohjaamaan led-valoja.</p>                    <div class='image-with-text'><img src='images/baarikaappi.jpeg'><p>Lasipullot hehkuvat led-valojen seassa ja tuo tunnelmaa pimeneviin syysiltoihin.</p> </div> <div class='image-with-text'><p></p> <img src='images/baarikaappi2.jpeg'></div>                    <div class='image-with-text'><p>Valoja pystyy vaihtamaan putkitelevision napeista. Nappeja on yhteensä 16, joista jokaisessa on oma väri tai väriyhdistelmä.</p><img src='images/button-press.gif'></div>                    <h3>I</h3>                    <p>Ajatus projektiin lähti Pinterestistä, jossa näin jonkun tehneen putkitelevisiosta baarikaapin ja lisäämällä sinne led-valot.</p>                    <p>Sattumalta huomasin, että television nappien takana oli vielä jätetty yksi piirilevy ja ajattelin heti kokeilevani saada ledit toimimaan television napeilla.</p>"
+        "content": "                           <img src='images/lights-change.gif'>                    <h3>Miten baarikaappi toimii?</h3>                    <p>Baarikaappi on rakennettu vanhaan Saloran putkitelevision runkoon sekä lisätty Arduino Uno ohjaamaan led-valoja.</p>                    <div class='image-with-text'><img src='images/baarikaappi.jpeg'><p>Lasipullot hehkuvat led-valojen seassa ja tuo tunnelmaa pimeneviin syysiltoihin.</p> </div> <div class='image-with-text'><p></p> <img src='images/baarikaappi2.jpeg'></div>                    <div class='image-with-text'><p>Valoja pystyy vaihtamaan putkitelevision napeista. Nappeja on yhteensä 16, joista jokaisessa on oma väri tai väriyhdistelmä.</p><img src='images/button-press.gif'></div>                    <h3>Idea projektiin</h3>                    <p>Ajatus projektiin lähti Pinterestistä, jossa näin jonkun tehneen putkitelevisiosta baarikaapin ja lisäämällä sinne led-valot.</p>                    <p>Sattumalta huomasin, että television nappien takana oli vielä jätetty yksi piirilevy ja ajattelin heti kokeilevani saada ledit toimimaan television napeilla.</p>"
       }
     },
     {
@@ -29,7 +29,7 @@
       },
       "article": {
         "heading": "Tarveasunnot kotisivujen uudistus",
-        "content": "<img src='images/tafi.png'> <h3>k</h3> <p>Suurin nettisivuprojekti johon olen osallistunut</p> <div class='image-with-text'><p>Ta:n vanhat nettisivut, josta lähdimme rakentamaan uutta.</p><img src='images/tafi-old-page.png'></div>"
+        "content": "<img src='images/tafi.png'> <h3></h3> <p>Suurin nettisivuprojekti johon olen osallistunut.</p> <div class='image-with-text'><p>Ta:n vanhat nettisivut, josta lähdimme rakentamaan uutta.</p><img src='images/tafi-old-page.png'></div> <p>Vanhat nettisivut olivat vanhalla Joomla-järjestelmällä sekä tietokantana käytetty vanha järjestelmä. Koko projekti </p>"
       }
     },
     {
@@ -141,7 +141,7 @@
       },
       "article": {
         "heading": "Löydä kaikki sanat taulukosta",
-        "content": "<img src='images/sanapeli.png'> <a target='_blank' href='apps/sanapeli'>Kokeile peliä</a>     <h3>Miten peli toimii?</h3>    <p>Pelissä on 10 tasoa josta seuraava on aina edellistä haastavampi. <br>        Pelaajalla on ruudukossa kirjaimia, joista tulee löytää niitä yhdistämällä oikeat ennalta määritetyt sanat. <br>        Pelissä ei ole pisteytystä tai aikarajaa. Jos pelaajalla on haasteita sanojen löytämisessä, voi hän käyttää loputtomasti vihjeitä niiden löytämiseen.        Vihje paljastaa yhden kirjaimen.    </p>    <h3>Pelin suunnittelu</h3>    <p>Mielenkiintoni kokeilla itse rakentaa yksinkertaista ja viihdyttävää sanapeliä lähti hävitessäni jatkuvasti LetterGrid-pelissä. <br>    Halusin purkaa turhautumistani rakentamalla oman sanapelin ja valita sanat itse tottakai. Halusin pelin näyttävän miellyttävältä ja olevan ulkoasultaan yksinkertainen sekä itse pelin olevan helppo.</p>"
+        "content": "<img src='images/sanapeli2.png'> <a target='_blank' href='apps/sanapeli'>Kokeile peliä</a>     <h3>Miten peli toimii?</h3>    <p>Pelissä on 10 tasoa josta seuraava on aina edellistä haastavampi. <br>        Pelaajalla on ruudukossa kirjaimia, joista tulee löytää niitä yhdistämällä oikeat ennalta määritetyt sanat. <br>        Pelissä ei ole pisteytystä tai aikarajaa. Jos pelaajalla on haasteita sanojen löytämisessä, voi hän käyttää loputtomasti vihjeitä niiden löytämiseen.        Vihje paljastaa yhden kirjaimen.    </p>    <h3>Pelin suunnittelu</h3>    <p>Mielenkiintoni kokeilla itse rakentaa yksinkertaista ja viihdyttävää sanapeliä lähti hävitessäni jatkuvasti LetterGrid-pelissä. <br>    Halusin purkaa turhautumistani rakentamalla oman sanapelin ja valita sanat itse tottakai. Halusin pelin näyttävän miellyttävältä ja olevan ulkoasultaan yksinkertainen sekä itse pelin olevan helppo.</p>"
       }
     },
     {
@@ -262,22 +262,6 @@
       "iconcolor": "blue-icon",
       "category": "nettisivu",
       "heading": "Hotelli Matts",
-      "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
-      "metainfo": {
-        "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
-        "date": "2023"
-      },
-      "article": {
-        "heading": "Nettisivujen ylläpito",
-        "content": "<img src='images/hotel-matts.png'>"
-      }
-    },
-    {
-      "id": 20,
-      "icon": "global-svgrepo-com.svg",
-      "iconcolor": "blue-icon",
-      "category": "nettisivu",
-      "heading": "Naantali Estelle",
       "description": "Yhdenmukaisen käyttöliittymän suunnittelu ja toteutus",
       "metainfo": {
         "keywords": ["ui", "ux", "design system", "komponentit", "prototyyppi"],
